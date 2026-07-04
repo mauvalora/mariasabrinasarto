@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Mappa Contestuale — Programma Sarto · Sapienza 2026–2032</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f6fa;
+  color: #1a1d2e;
+  min-height: 100vh;
+  padding: 24px 18px 52px;
+}
+
+/* ── HEADER ── */
+.header { text-align: center; margin-bottom: 26px; }
+.tagline {
+  display: inline-block;
+  background: linear-gradient(135deg, #6b1a2a 0%, #9b2335 100%);
+  border-radius: 16px;
+  padding: 20px 36px;
+  max-width: 700px;
+  box-shadow: 0 5px 24px rgba(107,26,42,.28);
+}
+.tagline .candidate {
+  font-size: 10.5px; letter-spacing: 1.6px; text-transform: uppercase;
+  color: rgba(255,255,255,.6); margin-bottom: 7px;
+}
+.tagline h1 {
+  font-size: 17px; font-weight: 700; color: #fff;
+  line-height: 1.4; letter-spacing: .2px;
+}
+.tagline .subtitle {
+  font-size: 12px; color: rgba(255,255,255,.78); margin-top: 6px;
+  font-style: italic;
+}
+.tagline .slogan {
+  font-size: 11px; color: rgba(255,255,255,.6); margin-top: 5px;
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+.version-tag {
+  display: inline-block; margin-top: 10px;
+  background: rgba(255,255,255,.17); border-radius: 20px;
+  padding: 3px 13px; font-size: 10.5px; color: rgba(255,255,255,.72);
+}
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; color: #9ca3af; margin: 18px 0 8px 2px;
+}
+
+/* ── MATRIX ── */
+.matrix { display: flex; flex-direction: column; gap: 11px; }
+
+.matrix-row {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 14px;
+  border: 1.5px solid;
+  overflow: visible;
+}
+
+/* Row label (left header) */
+.row-label {
+  width: 158px;
+  min-width: 158px;
+  padding: 15px 12px;
+  border-right: 1.5px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 12px 0 0 12px;
+}
+.row-icon  { font-size: 20px; line-height: 1; }
+.row-title { font-size: 11.5px; font-weight: 700; line-height: 1.35; }
+.row-desc  { font-size: 9px; line-height: 1.6; opacity: .8; }
+
+/* Cells wrapper */
+.row-cells {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  padding: 9px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ── CELL ── */
+.cell {
+  flex: 1;
+  min-width: 125px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 10px 11px;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.cell:hover { transform: translateY(-2px); box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+
+.cell-top { display: flex; gap: 7px; align-items: flex-start; }
+.c-icon  { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.c-text  { flex: 1; min-width: 0; }
+.c-name  { font-size: 11px; font-weight: 600; color: #111827; line-height: 1.35; }
+.c-tag   { font-size: 9px; color: #6b7280; margin-top: 3px; line-height: 1.45; }
+.c-chev  {
+  font-size: 8px; color: #c4c9d4; margin-left: 3px;
+  flex-shrink: 0; margin-top: 3px; transition: transform .2s;
+}
+.cell.open .c-chev { transform: rotate(90deg); }
+
+/* Expand body */
+.cell-body { display: none; margin-top: 9px; padding-top: 9px; border-top: 1px solid #f0f1f5; }
+.cell.open .cell-body { display: block; }
+
+.c-pts { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.c-pts li {
+  display: flex; gap: 6px; align-items: flex-start;
+  font-size: 10px; line-height: 1.5; color: #374151;
+}
+.c-pts li::before { content: '→'; flex-shrink: 0; color: #b0b7c3; font-size: 9px; margin-top: 1px; }
+
+.read-btn {
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 5px 10px; width: 100%;
+  background: #f7f8fa; border: 1px solid #e5e7eb;
+  border-radius: 6px; font-size: 10px; color: #4b5563;
+  cursor: pointer; transition: background .15s;
+}
+.read-btn:hover { background: #eef0f4; }
+
+/* ── BADGES ── */
+.badge-new {
+  display: inline-block; margin-left: 4px;
+  background: #d1fae5; border: 1px solid #6ee7b7;
+  color: #065f46; border-radius: 4px;
+  font-size: 7.5px; font-weight: 700; padding: 1px 5px;
+  vertical-align: middle; letter-spacing: .3px;
+}
+
+/* ── ROW PALETTES ── */
+/* Governance & Persone — indigo */
+.r-gov { background: #f1f2fe; border-color: #bfc5f7; }
+.r-gov .row-label  { border-right-color: #bfc5f7; }
+.r-gov .row-title  { color: #3730a3; }
+.r-gov .row-desc   { color: #6366c1; }
+.r-gov .cell       { border-color: #d4d8fb; }
+
+/* Digitale & Internazionale — amber/orange */
+.r-dig { background: #fffbee; border-color: #f5d98a; }
+.r-dig .row-label  { border-right-color: #f5d98a; }
+.r-dig .row-title  { color: #92400e; }
+.r-dig .row-desc   { color: #b45309; }
+.r-dig .cell       { border-color: #f0d990; }
+
+/* Ricerca & Innovazione — green */
+.r-res { background: #edfaf4; border-color: #82d9a8; }
+.r-res .row-label  { border-right-color: #82d9a8; }
+.r-res .row-title  { color: #065f46; }
+.r-res .row-desc   { color: #059669; }
+.r-res .cell       { border-color: #99d9b5; }
+
+/* Campus, Studenti & Benessere — sky blue */
+.r-cam { background: #edf7fb; border-color: #7ecde8; }
+.r-cam .row-label  { border-right-color: #7ecde8; }
+.r-cam .row-title  { color: #0c4a6e; }
+.r-cam .row-desc   { color: #0369a1; }
+.r-cam .cell       { border-color: #8dcde6; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  background: rgba(20,24,44,.42); backdrop-filter: blur(4px);
+  align-items: flex-start; justify-content: center;
+  padding: 40px 20px; overflow-y: auto;
+}
+.modal-overlay.visible { display: flex; }
+.modal {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  width: 100%; max-width: 720px;
+  padding: 30px 34px;
+  position: relative; margin: auto;
+  box-shadow: 0 10px 44px rgba(0,0,0,.14);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: #f3f4f6; border: 1px solid #d1d5db;
+  color: #374151; width: 28px; height: 28px;
+  border-radius: 50%; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.modal-close:hover { background: #e5e7eb; }
+.modal-cluster {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 1.1px;
+  color: #9ca3af; margin-bottom: 5px;
+}
+.modal-title {
+  font-size: 18px; font-weight: 700; color: #111827;
+  line-height: 1.4; margin-bottom: 18px; padding-right: 34px;
+}
+.modal-content p {
+  font-size: 13px; line-height: 1.8; color: #374151; margin-bottom: 14px;
+}
+.modal-content p:last-child { margin-bottom: 0; }
+.modal-content strong { color: #111827; }
+.modal-content ul { margin: 8px 0 14px 18px; }
+.modal-content ul li { font-size: 12.5px; line-height: 1.7; color: #374151; margin-bottom: 4px; }
+
+/* ── VISION STRIP ── */
+.vision {
+  margin-top: 18px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-left: 4px solid #6b1a2a;
+  border-radius: 0 10px 10px 0;
+  padding: 13px 18px;
+  display: flex; gap: 14px; align-items: center;
+  box-shadow: 0 1px 6px rgba(0,0,0,.05);
+}
+.vision-label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+  color: #6b1a2a; flex-shrink: 0; font-weight: 700;
+}
+.vision-text { font-size: 11.5px; color: #374151; line-height: 1.58; font-style: italic; }
+
+/* ── LEGEND ── */
+.legend { display: flex; gap: 12px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+.leg-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #6b7280; }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.hint { text-align: center; font-size: 10.5px; color: #9ca3af; margin-top: 10px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .matrix-row { flex-direction: column; }
+  .row-label {
+    width: 100%; min-width: unset;
+    border-right: none; border-bottom: 1.5px solid;
+    flex-direction: row; align-items: center;
+    padding: 12px 14px; gap: 10px;
+    border-radius: 12px 12px 0 0;
+  }
+  .row-cells { padding: 10px 10px 12px; }
+  .cell { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="tagline">
+    <div class="candidate">Maria Sabrina Sarto · Candidata Rettrice di Sapienza · Sessennio 2026–2032</div>
+    <h1>La Sapienza del Terzo Millennio</h1>
+    <div class="subtitle">Autorevolezza · Partecipazione · Inclusione · Internazionalizzazione</div>
+    <div class="slogan">La pluralità che costruisce il futuro</div>
+    <div class="version-tag">Programma definitivo · 30 giugno 2026 · 15 aree tematiche · 4 cluster</div>
+  </div>
+</div>
+
+<div class="section-label">Azioni di Governo</div>
+<div class="matrix">
+
+  <!-- ══════════════════════════════════════════
+       ROW 1 · GOVERNANCE & PERSONE
+  ══════════════════════════════════════════ -->
+  <div class="matrix-row r-gov">
+    <div class="row-label">
+      <span class="row-icon">⚖️</span>
+      <div>
+        <div class="row-title">Governance &amp; Persone</div>
+        <div class="row-desc">Modello a matrice · Capitale umano · Inclusione · Partecipazione</div>
+      </div>
+    </div>
+    <div class="row-cells">
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🏛️</span>
+          <div class="c-text">
+            <div class="c-name">Governance: Trasparenza &amp; Partecipazione</div>
+            <div class="c-tag">Modello a matrice · Ascolto · Cabina di regia · Dipartimenti · Presidi</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Governance ampia su azioni e missioni del modello a matrice: Prorettrici/Prorettori con specifiche deleghe + Cabina di regia di governance</li>
+            <li>Ascolto come metodo ordinario: appuntamento periodico con tutte le componenti, momenti di restituzione e confronto sullo stato del programma</li>
+            <li>Piena centralità dialogo con rappresentanze studentesche: da semplice consultazione a co-progettazione</li>
+            <li>Architettura decisionale: Collegio Direttori con parere obbligatorio, Presidi, corsi di studio e collegi di dottorato valorizzati</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'governance')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">⚙️</span>
+          <div class="c-text">
+            <div class="c-name">Amministrazione &amp; Semplificazione</div>
+            <div class="c-tag">Meno burocrazia · Modello a matrice · RA coordinamento · Cabina regia DG</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Restituire tempo a docenti e ricercatori: semplificazione adempimenti (transizione digitale + nuovo modello a matrice)</li>
+            <li>Modello a matrice amministrativo: "de-silosizzazione", Gruppo di Coordinamento stabile dei Responsabili Amministrativi (RA)</li>
+            <li>Cabina di regia per l'amministrazione presieduta dal/dalla DG, con tutte le Direttrici/Direttori di Area</li>
+            <li>Flussi procedurali chiari, cronoprogramma condiviso; unica base di dati comune con cruscotto di ateneo</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'amministrazione')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">👩‍🏫</span>
+          <div class="c-text">
+            <div class="c-name">Investire nel Capitale Umano</div>
+            <div class="c-tag">Reclutamento · IRIS-AP · PTA · Preruolo · Premialità · Tavoli MUR</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Criteri trasparenti per distribuzione punti organico: programmazione triennale ampia, cruscotto esteso a Dipartimenti, quota strategica rettrice</li>
+            <li>Piano straordinario up-grade (fine 2026): piena implementazione; tavoli di confronto a livello ministeriale per PTA</li>
+            <li>Piena valorizzazione del tecnologo a tempo indeterminato (art. 24-ter L. 240/2010)</li>
+            <li>Merito e premialità: applicazione del Regolamento (IRIS-AP), compensi premianti equi e trasparenti per docenti, PTA e CEL</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'capitaliumano')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🌈</span>
+          <div class="c-text">
+            <div class="c-name">Comunità Inclusiva, Sicura &amp; Solidale</div>
+            <div class="c-tag">Pari opportunità · CAV · Carriera Alias · Disabilità · Consigliera Fiducia</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Pari opportunità (art. 51 Cost.): bilanciamento di genere in tutte le strutture; Consigliera di Fiducia figura neutrale e indipendente</li>
+            <li>CAV, Carriera Alias, codice condotta molestie, supporto LGBTQ+: continuità e rafforzamento</li>
+            <li>Gender Equality Plan semplificato e concreto; contrasto mobbing; CUG rafforzato</li>
+            <li>Disabilità e DSA: garante di ateneo per gli studenti, portali accessibili, contrasto digital divide</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'comunita')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ROW 2 · DIGITALE & INTERNAZIONALE
+  ══════════════════════════════════════════ -->
+  <div class="matrix-row r-dig">
+    <div class="row-label">
+      <span class="row-icon">🌐</span>
+      <div>
+        <div class="row-title">Digitale, IA &amp; Internazionale</div>
+        <div class="row-desc">Ateneo 5.0 · Cybersecurity · IA · Comunicazione · Leadership europea</div>
+      </div>
+    </div>
+    <div class="row-cells">
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🤖</span>
+          <div class="c-text">
+            <div class="c-name">Ateneo Digitale &amp; Intelligenza Artificiale</div>
+            <div class="c-tag">Ateneo 5.0 · Fibra ottica · Cybersecurity · Comitato IA · DEH · EuroHPC</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Ateneo 5.0: Human Centric, sostenibilità, resilienza, transizione digitale — ecosistema iperconnesso e sostenibile</li>
+            <li>Nuova rete fibra ottica (100 Gbps), Wi-Fi ultima generazione, IoT Smart Building, technology refresh 5 anni</li>
+            <li>Resilienza cibernetica post-attacco febbraio 2026: SOC, monitoraggio continuo, standard cybersecurity nei contratti con fornitori</li>
+            <li>IA: Comitato Tecnico-Scientifico per l'AI (EU AI Act), chat-botxRAG, DEH, pacchetti software AI, EuroHPC e AI Factories europee</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'digitale')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">📢</span>
+          <div class="c-text">
+            <div class="c-name">Comunicazione per un Ateneo Moderno</div>
+            <div class="c-tag">Racconto comunità · Comitato Editoriale Web · Accessibilità · Ranking</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Narrazione autentica: racconto della comunità Sapienza con studentesse, studenti e personale al centro</li>
+            <li>Strumenti multitarget: Radio Sapienza, social, sito web, stampa — comunicazione verso studenti, famiglie, territorio, stakeholder</li>
+            <li>Comitato Editoriale Web per l'allineamento degli strumenti di comunicazione web; accessibilità contenuti (cap. XIII)</li>
+            <li>Ranking come strumento di lettura e miglioramento, non fine in sé: affiliazione pubblicazioni, tracciabilità produzione scientifica</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'comunicazione')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">✈️</span>
+          <div class="c-text">
+            <div class="c-name">Sapienza oltre i confini: Leadership Europea</div>
+            <div class="c-tag">CIVIS 11+6 · Dottorato internazionale · Area dedicata · 2160 accordi</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>CIVIS: 11 università europee + 6 africane; reti euromediterranee, America Latina, Africa, Medio Oriente, Asia</li>
+            <li>Attrazione talenti: housing, orientamento, assistenza amministrativa; Grant e programmi sostegno</li>
+            <li>Dottorato come volano: congiunti e cotutele, visiting PhD (status formale), Marie Skłodowska-Curie, borse internazionali</li>
+            <li>Ricostituzione Area dedicata all'internazionalizzazione; raccordo con MAECI, Ambasciate, Consolati; 2160 accordi valorizzati</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'internazionale')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end gov/trasversali section -->
+
+<div class="section-label" style="margin-top:22px">Missioni Istituzionali</div>
+<div class="matrix">
+
+  <!-- ══════════════════════════════════════════
+       ROW 3 · RICERCA, INNOVAZIONE & SALUTE
+  ══════════════════════════════════════════ -->
+  <div class="matrix-row r-res">
+    <div class="row-label">
+      <span class="row-icon">🔬</span>
+      <div>
+        <div class="row-title">Ricerca, Missioni &amp; Salute</div>
+        <div class="row-desc">Infrastrutture · Post-PNRR · Terza Missione · Quarta Missione · Università-Salute</div>
+      </div>
+    </div>
+    <div class="row-cells">
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">💡</span>
+          <div class="c-text">
+            <div class="c-name">Ricerca Scientifica: Risorse, Qualità &amp; Post-PNRR</div>
+            <div class="c-tag">FIS3 Starting Grant · 16M bandi · CERT · Post-PNRR · ESFRI · Qualità VQR</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Primo Ateneo in Italia per FIS3 Starting Grant; 16 milioni di euro in bandi interni nel 2026; supporto capillare ed equo a tutte le aree disciplinari</li>
+            <li>Infrastrutture condivise: facilities omogenee, piattaforma censimento laboratori, PNIR/ESFRI, tecnologi a tempo indeterminato</li>
+            <li>Qualità: monitoraggio continuo, affiliazione corretta pubblicazioni, rifiuto automatismi bibliometrici; CERT + Panel Dual Use</li>
+            <li>Post-PNRR: continuità infrastrutture e reti; reinvestimento economie di progetto; RTT + tecnologi; 600.000 euro/anno quote fondazioni</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'ricerca')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🚀</span>
+          <div class="c-text">
+            <div class="c-name">Terza Missione &amp; Trasferimento Tecnologico</div>
+            <div class="c-tag">SIEH · In-house Sapienza · Brevetti · DTC Lazio · Rome Technopole · D34Health</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Ecosistema innovazione integrato: SIEH, ricerca fondamentale → trasferimento → impatto socioeconomico</li>
+            <li>In-house di Sapienza (modello Lazio Innova): validazione e maturità tecnologica brevetti, maggiore potere negoziale</li>
+            <li>Tutela proprietà intellettuale: semplificazione brevettazione, spin-off, startup; capitale umano + digitalizzazione cross-check competenze</li>
+            <li>DTC Lazio, Rome Technopole, D34Health: patrimonio strategico da consolidare; public engagement, cittadinanza attiva</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'terzamissione')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🌍</span>
+          <div class="c-text">
+            <div class="c-name">Quarta Missione: Istituzione Civile &amp; Sostenibile<span class="badge-new">NEW</span></div>
+            <div class="c-tag">Polo Penitenziario · Civic engagement · Co-creazione · Padel e Salute</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Quarta Missione = sintesi civile dell'operato dell'Ateneo: motore di transizione sociale ed ecologica che mette al centro la persona</li>
+            <li>Polo Universitario Penitenziario e accessibilità "universale": impegno concreto per l'uguaglianza, abbattimento barriere, giustizia sociale</li>
+            <li>Civic engagement nelle periferie romane: incontri scuole, associazioni, terzo settore; orientamento, supporto didattico, presidi culturali</li>
+            <li>Co-creazione con territorio e salute pubblica: campagne screening gratuito, Padel e Salute, integrazione ricerca Policlinici e territorio</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'quartamissione')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🏥</span>
+          <div class="c-text">
+            <div class="c-name">Università-Salute: Ricerca, Clinica &amp; Formazione</div>
+            <div class="c-tag">Comitato coordinamento · Policlinico 1Mld€ · 3+1 poli · Ricerca biomedica</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>3 aree mediche (Policlinico Umberto I, Sant'Andrea, Polo Pontino) + 4° polo a Rieti: governance attenta che coniuga eccellenza scientifica e continuità assistenza</li>
+            <li>Comitato di Coordinamento per l'integrazione delle attività accademiche e assistenziali dei docenti di area medica (previsione Art. 27 Statuto)</li>
+            <li>Policlinico Umberto I: progetto ricostruzione (ca. 1 miliardo €) — campus medico-universitario di eccellenza integrato</li>
+            <li>Ricerca biomedica multidisciplinare: IR rafforzate, reclutamento qualità, attrattività giovani talenti</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'salute')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ROW 4 · CAMPUS, STUDENTI & BENESSERE
+  ══════════════════════════════════════════ -->
+  <div class="matrix-row r-cam">
+    <div class="row-label">
+      <span class="row-icon">🎓</span>
+      <div>
+        <div class="row-title">Campus, Studenti &amp; Benessere</div>
+        <div class="row-desc">Didattica · Diritto allo studio · Campus 5.0 · Multicampus · Sport · Cultura</div>
+      </div>
+    </div>
+    <div class="row-cells">
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">📖</span>
+          <div class="c-text">
+            <div class="c-name">Didattica Innovativa &amp; Diritto allo Studio</div>
+            <div class="c-tag">126.000 studenti · UniTelma · DEH · CORIT · C1 docenti · Placement</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Da 113.000 (2020) a 126.000 studenti (2026): qualità didattica, centralità CdS, dialogo rappresentanze, piattaforma aule IoT</li>
+            <li>Diritto allo studio: alloggi, borse, welfare abitativo (tavolo Regione-Comune), ristorazione diffusa, tutorato, salute psicofisica</li>
+            <li>Didattica telematica: UniTelma Sapienza come asset strategico per blended learning; Digital Education Hub MOOC; standard minimi misurabili</li>
+            <li>Internazionalizzazione didattica: CIVIS, double degrees, certificazione C1 docenti (CLA), CORIT bottom-up; dottorato IDT/ANVUR con incremento borsa</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'didattica')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">⚡</span>
+          <div class="c-text">
+            <div class="c-name">Edilizia, Sostenibilità &amp; Campus 5.0</div>
+            <div class="c-tag">BEI 2027-28 · C10 · ASPP team · Smart Grid 21MW · CER · Living Lab</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Piano strutturato riqualificazione: sicurezza safety+security, abbattimento barriere; BEI (C10, Borghetto Flaminio, aule, residenze — termine 2027-28)</li>
+            <li>Sicurezza luoghi di lavoro: team ASPP dedicato (modello Napoli Federico II / Bologna), RSPP, presidio governance dedicato in AGE</li>
+            <li>Campus Sapienza 5.0: Smart Grid diffusa 21MW (35 GWh/anno), fotovoltaico, accumulo, IA/ML/IoT gestione predittiva — Living Lab urbano multidisciplinare</li>
+            <li>Comunità Energetiche Rinnovabili (CER): ateneo protagonista transizione energetica; hub produttivo intelligente</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'campus')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">📍</span>
+          <div class="c-text">
+            <div class="c-name">Modello Multicampus: 36 sedi + Latina &amp; Rieti</div>
+            <div class="c-tag">Digital twin Latina · Navette ferroviaria · BESSa Rieti · CeSaRi · Comitato sedi</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Unica piattaforma digitale multicampus (Ateneo 5.0): gestione edifici, aule, laboratori sedi decentrate in tempo reale</li>
+            <li>Latina (Ce.R.S.I.Te.S.): digital twin polo pontino (web+app), navette elettriche in sharing con Latina Scalo ferroviaria</li>
+            <li>Rieti: BESSa (dipartimento multidisciplinare), CeSaRi; regolamentazione tipo dipartimento multidisciplinare per finanziamenti e reclutamento</li>
+            <li>Comitato di coordinamento per le sedi esterne (delegati Rettrice + Direttori strutture locali): programmazione investimenti integrata</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'multicampus')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+      <div class="cell" onclick="toggleCell(this)">
+        <div class="cell-top">
+          <span class="c-icon">🎭</span>
+          <div class="c-text">
+            <div class="c-name">Sport, Cultura, Socialità &amp; Benessere</div>
+            <div class="c-tag">MuSa · Theatron · Teatro Ateneo · DTC Lazio · Sapienza Sport · CUS</div>
+          </div>
+          <span class="c-chev">▶</span>
+        </div>
+        <div class="cell-body">
+          <ul class="c-pts">
+            <li>Cultura: MuSa (Musica Sapienza, 2006), Theatron (teatro greco-latino, 2010), Teatro di Ateneo (riqualificazione e rilancio); DTC Lazio e CHANGES</li>
+            <li>Sport: Sapienza Sport trasformata in campus sportivo con aule studio e spazi socializzazione; rinnovo concessione; piano mobilità sostenibile</li>
+            <li>Spazi e socialità: aule studio, aree verdi, luoghi ristoro distribuiti tra tutti i poli; IoT gestione spazi</li>
+            <li>Benessere: ascolto psicologico, assistenza sanitaria, prevenzione; inclusione e accessibilità rimozione ogni barriera</li>
+          </ul>
+          <button class="read-btn" onclick="openModal(event,'sport')">📄 Leggi nel programma</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end missioni section -->
+
+<!-- Vision strip -->
+<div class="vision">
+  <div class="vision-label">Visione</div>
+  <div class="vision-text">«La visione è quella di una Università pubblica, al servizio della società, garante del diritto allo studio per tutte e per tutti, senza distinzioni e discriminazioni, interlocutrice di riferimento delle istituzioni e del territorio, al vertice delle classifiche dei ranking nazionali ed internazionali.»</div>
+</div>
+
+<div class="legend">
+  <div class="leg-item"><span class="leg-dot" style="background:#6366f1"></span> Governance &amp; Persone</div>
+  <div class="leg-item"><span class="leg-dot" style="background:#f59e0b"></span> Digitale &amp; Internazionale</div>
+  <div class="leg-item"><span class="leg-dot" style="background:#10b981"></span> Ricerca, Missioni &amp; Salute</div>
+  <div class="leg-item"><span class="leg-dot" style="background:#0ea5e9"></span> Campus, Studenti &amp; Benessere</div>
+</div>
+
+<p class="hint">Clicca su ogni scheda per espandere · "Leggi nel programma" per il testo integrale · Esc per chiudere il pannello</p>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-overlay" id="overlay" onclick="closeOnOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-cluster" id="modal-cluster"></div>
+    <div class="modal-title"  id="modal-title"></div>
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const S = {
+
+  governance: {
+    cluster: "Governance & Persone",
+    title: "Governance: un sistema basato su trasparenza e partecipazione",
+    paragraphs: [
+      "Intendo affrontare i nodi strutturali, le complessità burocratiche e le disomogeneità interne non con interventi isolati, ma con un approccio programmatico e sistemico che implementi il <strong>modello collaborativo a matrice</strong> e si fondi su un metodo di lavoro basato su condivisione, trasparenza, dialogo, inclusione, lavoro di squadra.",
+      "<strong>Un modello strutturato, responsabile, interconnesso.</strong> La governance di Sapienza deve essere ampia, articolata sulle azioni e missioni del modello organizzativo proposto. Per ognuna di queste direttrici si prevede l'articolazione in Prorettrici/Prorettori e delegate/delegati della Rettrice, con specifiche competenze. Il raccordo e coordinamento tra le aree di governance avverrà attraverso la <strong>Cabina di regia di governance</strong>, presieduta dalla Rettrice e composta dalle/dai Prorettrici/Prorettori e dalla/dal Direttrice/Direttore Generale.",
+      "<strong>L'ascolto come metodo.</strong> La partecipazione non va intesa come un adempimento formale, ma come una modalità ordinaria di governo. Piena centralità assume il <strong>dialogo continuo con le rappresentanze studentesche</strong>, con l'obiettivo di trasformare l'ascolto in un motore di co-progettazione. Sarà istituito un <strong>appuntamento periodico e continuativo dedicato all'ascolto della comunità</strong> universitaria, per raccogliere esigenze, proposte e criticità. Saranno promossi <strong>momenti periodici di restituzione e confronto</strong> sullo stato di attuazione del programma, sugli obiettivi raggiunti e sulle criticità ancora aperte.",
+      "<strong>L'architettura delle decisioni per una governance partecipata.</strong> Il processo decisionale valorizza il ruolo fondamentale di Dipartimenti e Facoltà nella elaborazione delle politiche strategiche. Intendo valorizzare maggiormente il ruolo del Collegio dei Direttori, <strong>rafforzando il maggiore coinvolgimento del Collegio dei Direttori di Dipartimento</strong> che esprime pareri obbligatori sulle materie di competenza. Dovrà essere prevista in forma stabile la partecipazione dei Presidi. Ritengo fondamentale valorizzare altresì il ruolo essenziale svolto dai corsi di studio e collegi di dottorato di ricerca."
+    ]
+  },
+
+  amministrazione: {
+    cluster: "Governance & Persone",
+    title: "Amministrazione strutturata, responsabile e interconnessa",
+    paragraphs: [
+      "<strong>Restituire tempo per fare ricerca e didattica di qualità: meno burocrazia, più scienza.</strong> Il tempo è la risorsa più preziosa di una comunità accademica. Eppure oggi una parte crescente del tempo dei docenti e del PTA è assorbita da adempimenti, relazioni, procedure, controlli e rendicontazioni. Mi impegno ad agire per restituire ai docenti e ai ricercatori il tempo sottratto dagli adempimenti. I due ambiti principali di intervento sono: il <strong>completamento della transizione digitale</strong> del nostro Ateneo e l'<strong>integrazione e traslazione del nuovo modello di governance a matrice</strong> nella struttura organizzativa e operativa dell'amministrazione.",
+      "<strong>Un modello organizzativo interconnesso e collaborativo.</strong> L'amministrazione centrale di Sapienza non è un mero apparato burocratico di supporto, ma il vero e proprio motore strategico e operativo che permette all'Ateneo di funzionare, innovare e crescere. Per accompagnare efficacemente le missioni istituzionali, l'amministrazione centrale deve adottare un <strong>modello a matrice</strong>, superando le barriere tra aree amministrative diverse. A tal fine è necessario costituire un <strong>Gruppo di Coordinamento stabile dei Responsabili Amministrativi (RA)</strong> delle strutture periferiche, con la partecipazione dei capi ufficio delle aree dell'amministrazione centrale.",
+      "<strong>Cabina di regia per l'amministrazione.</strong> Il pieno raccordo di questo gruppo di coordinamento dei RA con la Direzione Generale sarà espletato attraverso la costituzione della <strong>Cabina di regia per l'amministrazione</strong>, presieduta dalla/dal Direttrice/Direttore Generale, partecipata da tutte le Direttrici/Direttori di Area Amministrativa e dal referente del gruppo di coordinamento dei RA. Questa Cabina di regia avrà anche la funzione di recepire gli indirizzi strategici e le politiche definite in seno alla Cabina di regia di governance.",
+      "<strong>Organi, procedure e semplificazione decisionale.</strong> Un'azione di governo efficace richiede <strong>procedure decisionali snelle, tempi certi</strong> e una chiara distinzione tra indirizzo politico, gestione amministrativa e responsabilità tecniche. Risulta essenziale una chiara definizione dei flussi procedurali, che si basi su un <strong>cronoprogramma di azioni</strong> e consenta una programmazione condivisa tra amministrazione centrale e strutture periferiche.",
+      "<strong>Trasparenza e parità di accesso alle informazioni.</strong> A questo modello operativo a matrice deve corrispondere un'<strong>unica base di dati comune</strong>, che unifichi la molteplicità delle piattaforme e database in uso. La <strong>trasparenza amministrativa e la piena tracciabilità dei processi</strong> sono condizioni di equità e di efficienza. Questo sarà reso possibile grazie alla condivisione di dati attraverso un cruscotto di ateneo, con accesso a Dipartimenti e Facoltà."
+    ]
+  },
+
+  capitaliumano: {
+    cluster: "Governance & Persone",
+    title: "Investire nel capitale umano: programmazione delle risorse, reclutamento e sviluppo professionale",
+    paragraphs: [
+      "In un ateneo in crescita per attività di ricerca, per ampiezza e qualità dell'offerta formativa, per impegno nelle attività di terza e quarta missione, il tema dell'<strong>investimento nel capitale umano assume una centralità assoluta</strong>, sia con riferimento al personale docente che al personale tecnico-amministrativo bibliotecario. Intendo impegnarmi con fermezza per <strong>incrementare le risorse</strong> destinate al reclutamento e alla progressione di carriera del personale docente, tecnico-amministrativo e bibliotecario.",
+      "<strong>Criteri chiari per la distribuzione dei punti organico.</strong> Occorre <strong>allargare la stretta logica incrementale</strong> della spesa storica a favore di una <strong>programmazione triennale ampia</strong> fondata su priorità esplicite, valutazione qualitativa e indicatori di risultato. È necessario che siano definiti <strong>nuovi criteri espliciti, condivisi e facilmente verificabili</strong> grazie a una base dati unificata di ateneo. Lo <strong>strumento cruscotto di Ateneo</strong> dovrà essere esteso al monitoraggio degli indicatori di performance a livello di Dipartimenti e Facoltà. Anche la <strong>quota strategica</strong> di diretta responsabilità della Rettrice dovrà essere assegnata a fronte di un'individuazione ex-ante chiara delle linee strategiche.",
+      "<strong>Una visione sostenibile delle risorse.</strong> La <strong>sostenibilità del bilancio</strong>, che nel 2026 ha superato il miliardo di euro, non è un vincolo che limita le ambizioni, ma la condizione che le rende credibili e realizzabili nel tempo. Investire nelle persone e mantenere l'equilibrio strutturale del bilancio non sono obiettivi in conflitto, ma due facce della stessa responsabilità di governo.",
+      "<strong>Il personale tecnico amministrativo bibliotecario come investimento e asse strategico.</strong> Il PTA costituisce l'asse portante dell'organizzazione e del funzionamento di ogni struttura dell'Ateneo. Saranno potenziate le politiche di reclutamento e progressione di carriera. Sarà perseguito il <strong>rafforzamento dell'organico</strong>, la stabilizzazione delle competenze acquisite, una distribuzione equilibrata dei carichi. Saranno avviati <strong>tavoli di confronto a livello ministeriale</strong> per condizioni economiche più eque.",
+      "<strong>Formazione, benessere organizzativo e merito e premialità.</strong> Sarà promossa un'offerta formativa continua adeguata alla trasformazione digitale. Il <strong>riconoscimento del merito</strong> sarà reso operativo attraverso l'<strong>applicazione del nuovo sistema di premialità</strong> (Regolamento IRIS-AP, già approvato dagli Organi Collegiali), impegnandosi in prima persona a trovare soluzioni condivise con il Collegio dei Revisori, per riconoscere compensi premianti equi e trasparenti a tutto il personale docente, PTA e CEL."
+    ]
+  },
+
+  comunita: {
+    cluster: "Governance & Persone",
+    title: "Una comunità inclusiva, sicura e solidale",
+    paragraphs: [
+      "Con ferma convinzione intendo proseguire nel percorso intrapreso su temi inerenti l'inclusione, il forte impegno contro le diseguaglianze, il serio contrasto ad ogni forma di discriminazione e violenza, la garanzia del pieno rispetto della dignità di tutte le persone. Sapienza è attiva da anni sui <strong>temi dell'inclusione, della diversità e del contrasto alle diseguaglianze</strong>. L'obiettivo è trasformare l'Ateneo in un ambiente <em>inclusive by design</em>, dove la diversità non è considerata un limite, ma un valore aggiunto.",
+      "<strong>Inclusione, contrasto alle diseguaglianze, pari opportunità.</strong> Fondamentale è il ruolo svolto dal Comitato Tecnico Scientifico sulla Diversità e l'Inclusione, dal Comitato Unico di Garanzia per le Pari Opportunità, dalla <strong>Consigliera di Fiducia</strong>, figura neutrale e indipendente a cui può rivolgersi chiunque ritenga di essere vittima di molestie, mobbing o discriminazioni. È necessario perseguire con determinazione le politiche di pari opportunità (art. 51 Cost.), garantendo il corretto bilanciamento di genere in tutte le strutture.",
+      "<strong>Genere, identità e contrasto alla violenza.</strong> Va data continuità alle molte iniziative assunte, in particolare al <strong>Centro Antiviolenza dell'Ateneo (CAV)</strong>, inaugurato nel luglio 2022, alla <strong>Carriera Alias</strong>, al Codice di condotta per la tutela della dignità delle persone e per la prevenzione delle molestie, alle attività di supporto psicologico e a tutte le iniziative a favore della comunità LGBTQ+. Il <strong>Gender Equality Plan (GEP)</strong> deve essere semplificato e reso più concreto, fruibile e attuabile con azioni sostanziali e di sistema.",
+      "<strong>Disabilità, disturbi dell'apprendimento, accessibilità, contrasto alle diseguaglianze sociali.</strong> Da potenziare e rafforzare sono i servizi mirati che l'ateneo già offre per garantire il diritto allo studio e l'autonomia delle persone con disabilità. Forte deve essere l'impegno di Sapienza a non lasciare indietro nessuno. Fondamentale sarà la figura del <strong>garante di ateneo per gli studenti</strong>. Dovrà essere rafforzato lo sviluppo di portali e materiali didattici accessibili per superare il <em>digital divide</em> e garantire la fruibilità dei contenuti a tutti."
+    ]
+  },
+
+  digitale: {
+    cluster: "Digitale, IA & Internazionale",
+    title: "Un Ateneo digitale: tecnologie abilitanti, integrazione dei dati, intelligenza artificiale",
+    paragraphs: [
+      "<strong>Il modello di Ateneo 5.0</strong> intende definire l'evoluzione culturale e tecnologica delle università, trasponendo nel mondo accademico i principi della <em>Società 5.0</em> e dell'<em>Industria 5.0</em>. I suoi elementi fondamentali sono: la <strong>centralità della persona</strong> (<em>Human Centric</em>), la <strong>sostenibilità e transizione ecologica</strong>, la <strong>resilienza</strong> e la <strong>transizione digitale</strong>. L'obiettivo fondamentale è la creazione di un <strong>ecosistema digitale iperconnesso, flessibile, resiliente e sostenibile</strong>.",
+      "<strong>Potenziamento delle infrastrutture digitali e transizione tecnologica di ateneo.</strong> Le linee di intervento riguardano: (i) nuova rete in fibra ottica ad altissima capacità (100 Gbps), per interconnettere tutte le sedi di Sapienza (Roma, Latina e Rieti); (ii) modernizzazione e adeguamento di reti e cablaggio intelligente; (iii) connettività wireless di ultima generazione; (iv) integrazione IoT per lo Smart Building e gestione sostenibile degli spazi; (v) <em>technology refresh</em> programmato a 5 anni per continuità operativa.",
+      "<strong>Resilienza cibernetica, sicurezza delle informazioni e gestione del rischio.</strong> La progressiva digitalizzazione richiede un cambio di paradigma radicale nella protezione del patrimonio informativo. Consapevoli della crescente sofisticazione delle minacce transnazionali — come dimostrato dall'<strong>attacco informatico subito dal nostro Ateneo lo scorso febbraio</strong> — l'azione di governo promuoverà un <strong>approccio globale alla cybersecurity</strong>: tecnologie avanzate (SOC, monitoraggio continuo, <em>intrusion detection</em>, <em>back-up</em> immutabile), processi organizzativi (formazione continua, audit vulnerabilità) e <strong>standard stringenti di cybersecurity nei contratti con i fornitori esterni</strong>.",
+      "<strong>Intelligenza artificiale come volano per ricerca, didattica e organizzazione.</strong> L'AI è il fattore della più profonda trasformazione tecnologica, scientifica e culturale del nostro tempo. Sapienza punta a diventare un riferimento nazionale per l'uso etico e responsabile dell'AI: sarà definito un <strong>modello di governance per l'AI</strong> fondato su responsabilità, trasparenza, equità e rispetto del quadro normativo europeo (EU AI Act), con la costituzione di un <strong>Comitato Tecnico-Scientifico di Ateneo per l'AI</strong>. Strumenti già in sperimentazione come il <strong>Retrieval-Augmented Generation (chat-botxRAG)</strong> per l'e-tutoring dovranno essere resi disponibili a tutti. Sarà garantito un accesso diffuso, equo e democratico alle risorse di calcolo avanzato, incluse le iniziative <strong>EuroHPC e le AI Factories europee</strong>."
+    ]
+  },
+
+  comunicazione: {
+    cluster: "Digitale, IA & Internazionale",
+    title: "Comunicazione per un grande ateneo moderno e dinamico",
+    paragraphs: [
+      "Una grande università deve essere aperta e riconoscibile. È necessario promuovere una <strong>comunicazione istituzionale moderna, trasparente ed efficace</strong>, capace di raccontare alla società le attività dell'Ateneo, le opportunità che offre, i risultati della ricerca, le innovazioni sviluppate e il valore culturale e scientifico prodotto dalla comunità accademica. Si darà continuità alle <strong>strategie comunicative ampiamente implementate negli ultimi anni</strong>, valorizzando in particolare l'aspetto di <strong>racconto della vita della nostra comunità</strong>, portando al centro le studentesse e gli studenti, ricercatrici e ricercatori, i docenti e tutti i coloro del personale tecnico-amministrativo bibliotecario.",
+      "La comunicazione di Sapienza sarà basata sull'utilizzo di strumenti e piattaforme diverse, innovative e <em>multitarget</em>: <strong>Radio Sapienza</strong>, social media, sito web, media, stampa. L'obiettivo è una comunicazione mirata al cittadino, alle famiglie degli studenti e agli stakeholder, focalizzandosi sulla comunità Sapienza e sul messaggio di <strong>Sapienza come comunità eccellente ed inclusiva</strong>, aperta a tutti coloro che scelgono un percorso di formazione di qualità. Dovrà essere rafforzato e reso centrale anche il ruolo del <strong>Comitato Editoriale Web</strong> nello svolgere azione di allineamento e raccordo degli strumenti di comunicazione web.",
+      "Fondamentale è il tema dell'<strong>accessibilità dei contenuti della comunicazione</strong> per promuovere l'approccio di inclusività che è centrale nelle missioni di Sapienza (capitolo XIII). Per conseguire tale fine è strategico un investimento mirato a rafforzare il settore con figure qualificate, corrispondenti ai diversi target di comunicazione, combinato con iniziative di formazione dedicate.",
+      "Il <strong>posizionamento nelle classifiche nazionali e internazionali</strong> è uno strumento utile a leggere i punti di forza e le aree di miglioramento dell'Ateneo, non un obiettivo in sé. Sarà perseguita una gestione consapevole degli indicatori, dalla corretta affiliazione delle pubblicazioni alla qualità delle informazioni trasmesse, per rappresentare con accuratezza il reale valore di Sapienza e sostenerne la <strong>reputazione su scala globale</strong>."
+    ]
+  },
+
+  internazionale: {
+    cluster: "Digitale, IA & Internazionale",
+    title: "Sapienza oltre i confini: una leadership europea e internazionale",
+    paragraphs: [
+      "La Sapienza, per storia, dimensione e autorevolezza scientifica, è chiamata a svolgere un ruolo di primo piano nello spazio europeo della ricerca e della formazione superiore. <strong>Rafforzarne la dimensione internazionale</strong> significa investire responsabilmente sul futuro dell'Ateneo. Ritengo fondamentale rilanciare e rafforzare una <strong>strategia di internazionalizzazione strutturata, trasversale, integrata e orientata al massimo impatto</strong>.",
+      "<strong>Visione e posizionamento globale.</strong> La <strong>dimensione internazionale rappresenta una componente essenziale dell'identità e delle missioni dell'Ateneo</strong>. Sarà valorizzata in particolare la storica funzione di riferimento dell'Ateneo per aree strategiche quali il Mediterraneo, l'America Latina, l'Africa, il Medio Oriente e l'Asia. Fondamentale è l'attenzione al posizionamento dell'Ateneo nei ranking internazionali come strumento di lettura e miglioramento. In tale contesto è fondamentale l'attenzione all'<strong>Alleanza CIVIS</strong>, che si avvale oggi di una rete di <strong>11 università europee e di 6 africane</strong>.",
+      "<strong>Attrazione dei talenti e cultura dell'accoglienza.</strong> La capacità di attrarre talenti richiede servizi adeguati e una reale cultura dell'ospitalità. I servizi di supporto si concentreranno sull'<strong>housing</strong>, valorizzando e sviluppando ulteriormente le residenze universitarie e i servizi di ospitalità già attivati, sull'orientamento, sull'assistenza amministrativa, sui percorsi di inclusione nella vita accademica e sociale, sull'insegnamento della lingua italiana. Sarà data continuità alle iniziative di <strong>visiting professors e visiting researchers</strong>, considerando la possibilità di estendere il periodo di ospitalità.",
+      "<strong>Il Dottorato di Ricerca come Volano Internazionale.</strong> I corsi di dottorato rappresentano uno dei principali strumenti di internazionalizzazione. Le azioni principali includono: (i) sostenere i dottorati internazionali congiunti, le cotutele e i titoli multipli con partner di eccellenza; (ii) incrementare il finanziamento di borse attraverso accordi con enti e fondazioni internazionali; (iii) promuovere una partecipazione intensiva ai principali programmi europei (Marie Skłodowska-Curie, Erasmus+); (iv) <strong>introdurre e disciplinare formalmente lo status di <em>visiting PhD</em></strong>.",
+      "<strong>Semplificazione e supporto amministrativo.</strong> Per sostenere efficacemente questi processi sarà fondamentale la <strong>ricostituzione di un'Area dedicata</strong> ai servizi e al supporto all'internazionalizzazione, che funga da catalizzatore e volano di crescita di tutte le attività di matrice internazionale attinenti alle diverse missioni istituzionali dell'Ateneo. Sarà fondamentale il ruolo di raccordo con il MAECI, con Ambasciate e Consolati, per valorizzare la rete di oltre <strong>2160 accordi internazionali esistenti</strong>."
+    ]
+  },
+
+  ricerca: {
+    cluster: "Ricerca, Missioni & Salute",
+    title: "Ricerca scientifica: finanziamenti, infrastrutture, risorse e servizi",
+    paragraphs: [
+      "Nell'ultimo sessennio la ricerca scientifica in Sapienza ha portato a risultati sempre di maggiore rilevanza e impatto, sostenendo la <strong>crescita del nostro Ateneo nei ranking nazionali ed internazionali</strong>. La sfida del PNRR ha rappresentato una spinta propulsiva. La posizione di <strong>primo Ateneo in Italia per progetti FIS3 della tipologia Starting Grant</strong> è frutto delle strategie per la ricerca rivolte principalmente ai dottorandi, assegnisti di ricerca e specializzandi. Considero fondamentale mettere in atto azioni che puntino al <strong>potenziamento e consolidamento dell'ecosistema della ricerca scientifica</strong>.",
+      "<strong>Le infrastrutture di ricerca.</strong> Intendo proseguire nel percorso di potenziamento e sostegno alle infrastrutture di ricerca di Ateneo, attraverso: il completamento delle <em>facilities</em> omogenee per tipologia di strumentazione; il <strong>miglioramento dell'accessibilità all'infrastruttura</strong> mediante una piattaforma unica di gestione; il rafforzamento della linea di finanziamento dedicata alla manutenzione di attrezzature scientifiche; la valorizzazione del <strong>personale tecnico altamente qualificato</strong>, incluso il tecnologo a tempo indeterminato. Lo sviluppo dovrà collocarsi in coerenza con il PNIR e con le strategie ESFRI.",
+      "<strong>Attrazione talenti, finanziamenti e qualità.</strong> Sarà implementata una <strong>politica di sostegno alla ricerca scientifica capillare, basata sui principi di equità, inclusività, pari opportunità</strong> per tutte le ricercatrici e tutti i ricercatori, valorizzando tutti gli ambiti scientifici. La capacità di attrarre finanziamenti competitivi (ERC, Horizon, PRIN) dipende in misura crescente dalla qualità del supporto professionale. Per la <strong>qualità</strong>: sistema interno di monitoraggio continuo, rispetto delle specificità disciplinari e rifiuto di automatismi bibliometrici; affiliazione corretta delle pubblicazioni.",
+      "<strong>Etica, sicurezza, integrità della ricerca.</strong> Ogni attività di ricerca deve essere condotta nel rispetto dei più elevati standard scientifici e deontologici. Sarà valorizzato il ruolo del <strong>Comitato Etico per la Ricerca Transdisciplinare (CERT)</strong>, in seno al quale è istituito un <strong>Panel Dual Use</strong>. La <strong>sicurezza della ricerca</strong> è il terzo pilastro fondamentale: tutela e corretta valorizzazione dei risultati e della proprietà intellettuale, consapevolezza delle questioni connesse alla ricerca a duplice uso, sicurezza dei dati della ricerca.",
+      "<strong>Governare il post-PNRR: la sfida strategica di Sapienza.</strong> La partecipazione di Sapienza alle numerose iniziative strutturate in forma di fondazione — i Centri Nazionali, gli Ecosistemi e i Partenariati Estesi — comporta impegni economici per oltre <strong>600.000 euro annui di quote associative</strong>. Interverrò su tre fronti: (i) <strong>continuità alle infrastrutture e alle reti attivate</strong>, inserendole nella pianificazione economico-finanziaria pluriennale; (ii) le <strong>economie di progetto generate dal PNRR</strong> dovranno essere reinvestite in modo programmatico per alimentare l'ecosistema della ricerca; (iii) <strong>azione concordata verso il MUR</strong> per completare il piano straordinario per il reclutamento degli RTT e attivare reclutamento di tecnologi a tempo indeterminato."
+    ]
+  },
+
+  terzamissione: {
+    cluster: "Ricerca, Missioni & Salute",
+    title: "Terza missione: valorizzazione della ricerca, trasferimento tecnologico, impatto socioeconomico",
+    paragraphs: [
+      "La natura generalista della Sapienza costituisce un vantaggio competitivo unico nel promuovere la terza missione. Nuovo impulso dovrà essere dato a tutta la filiera della terza missione, dalla valorizzazione della ricerca al trasferimento tecnologico, dalla brevettazione fino alla <strong>creazione, incubazione e accelerazione di start-up</strong>. L'istituzione recente del centro di ricerca e servizi <strong>SIEH</strong> si inquadra nell'ottica di rafforzare le attività di terza missione, con particolare riferimento agli aspetti legati al supporto alle start-up e spin-off e alla promozione della cultura imprenditoriale.",
+      "<strong>Valorizzazione della ricerca e trasferimento tecnologico.</strong> La sfida dei prossimi anni sarà quella di consolidare e rafforzare un ecosistema dell'innovazione sempre più integrato, nel quale ricerca fondamentale, ricerca applicata, trasferimento tecnologico e impatto sociale si alimentino reciprocamente. Tra le possibili soluzioni c'è quella di creare un <strong><em>in-house</em> di Sapienza</strong> (come ha adottato la Regione Lazio con la creazione di <em>Lazio Innova</em>) con la funzione di traghettare i prodotti innovativi della ricerca al conseguimento della certificazione, innalzandone e validandone il livello di maturità tecnologica.",
+      "<strong>Tutela della proprietà intellettuale e promozione di nuova imprenditorialità.</strong> Particolare attenzione sarà dedicata alla tutela e valorizzazione della proprietà intellettuale, alla semplificazione dei processi di brevettazione, alla promozione di spin-off e startup innovative. Le esperienze di <strong>DTC Lazio</strong>, <strong>Rome Technopole</strong> e <strong>D34Health</strong> rappresentano un patrimonio strategico da consolidare e sviluppare ulteriormente, rafforzando il posizionamento dell'Ateneo nei principali ecosistemi nazionali ed europei dell'innovazione.",
+      "<strong>Impatto sociale.</strong> Trasformare la conoscenza in valore per la società, la ricerca in innovazione e l'innovazione in sviluppo sostenibile rappresenta una delle principali responsabilità di una grande università pubblica. La Sapienza genera conoscenza, forma professionisti e cittadini, contribuisce all'innovazione, alla tutela della salute, alla crescita economica, allo sviluppo culturale, alla sostenibilità ambientale. In questa direzione saranno rafforzate e potenziate le iniziative di <strong><em>public engagement</em></strong>, le iniziative di divulgazione scientifica, i percorsi di cittadinanza attiva e le collaborazioni con scuole, enti locali, associazioni e organizzazioni del terzo settore."
+    ]
+  },
+
+  quartamissione: {
+    cluster: "Ricerca, Missioni & Salute",
+    title: "Quarta missione: un'istituzione civile, inclusiva e sostenibile",
+    paragraphs: [
+      "Se la Terza Missione apre le porte della Sapienza verso l'esterno per trasformare la conoscenza in valore economico e culturale, la <strong>Quarta Missione rappresenta l'assunzione di una piena responsabilità politica, sociale ed etica</strong> nei confronti della nostra comunità interna e del pianeta. Essere l'università più grande d'Europa ci impone di non essere semplici spettatori dei cambiamenti, ma il <strong>motore pulsante di una transizione sociale ed ecologica che metta al centro la persona</strong>.",
+      "<strong>Diversità, equità, inclusione, fragilità.</strong> Per la Sapienza del terzo millennio, la Quarta Missione rappresenterà la sintesi civile dell'operato dell'Ateneo: un impegno concreto per l'uguaglianza, l'abbattimento delle barriere, la giustizia sociale (capitolo XIV), la sostenibilità ambientale declinata nel modello di Ateneo 5.0 (capitolo V) e da attuare nel programma di Campus Sapienza 5.0 (capitolo VII). La Sapienza del futuro non si limiterà a produrre sapere, ma si farà <strong>custode e promotrice di cittadinanza attiva</strong>. Da perseguire e sostenere sarà il progetto del <strong>Polo Universitario Penitenziario</strong>, il tema dell'accessibilità «universale», le politiche abitative e welfare studentesco, gli obiettivi di una Didattica innovativa, sostenibile.",
+      "<strong>Co-creazione con il territorio e salute pubblica.</strong> Le attività di co-creazione con il territorio e salute pubblica mirano al <strong>contrasto alla povertà educativa</strong>. Saranno rafforzati gli incontri di <em>civic engagement</em> promossi dall'ateneo nelle periferie romane, collaborando con scuole, associazioni e terzo settore per offrire orientamento, supporto didattico e presidi culturali. Relativamente agli aspetti correlati alla salute come bene comune, la valorizzazione dell'integrazione tra la ricerca scientifica dei nostri Policlinici universitari e il territorio, attraverso campagne diffuse e gratuite di screening, prevenzione e divulgazione sanitaria — come le iniziative di successo <strong>Padel e Salute</strong> — rimane un asset strategico.",
+      "Per portare avanti questa missione così trasversale e interconnessa con le attività dell'ateneo, sarà fondamentale promuovere l'attuazione del modello a matrice descritto nei capitoli I e II per assicurare la connessione tra ateneo centrale e strutture periferiche (Dipartimenti, Facoltà e Centri), proseguendo nella linea di finanziamento stabile e trasparente dei progetti ad impatto sociale promossi da Dipartimenti e Facoltà."
+    ]
+  },
+
+  salute: {
+    cluster: "Ricerca, Missioni & Salute",
+    title: "Università-Salute: integrazione tra ricerca, didattica e attività assistenziale",
+    paragraphs: [
+      "Per Sapienza la dimensione della salute rappresenta un terreno strategico in cui ricerca, didattica, formazione specialistica e assistenza si intrecciano in modo inscindibile. La presenza di una grande area medica, in grado di fornire sia una ricerca di base che una ricerca clinica di alto livello, e il rapporto con le strutture assistenziali, costituiscono un patrimonio unico, che richiede una governance attenta a <strong>coniugare l'eccellenza scientifica e formativa con la qualità e la continuità dell'assistenza</strong>. Sapienza svolge le sue attività istituzionali ed assistenziali in <strong>tre poli ospedalieri importanti</strong> (Policlinico Umberto I, Ospedale Sant'Andrea, Polo Pontino) e sta avviando un ulteriore polo presso la sede di Rieti.",
+      "L'<strong>Art. 27 dello Statuto di Sapienza</strong> sancisce l'importanza dell'integrazione tra attività universitarie e assistenziali. Il <strong>ruolo di cerniera delle Facoltà mediche</strong> nell'integrazione tra attività di ricerca e didattica e attività assistenziali è centrale, così come affermato al comma 2 del medesimo articolo. Questo ruolo di raccordo deve <strong>valorizzare il rapporto con i Dipartimenti</strong>, centrali per tutti gli aspetti attinenti alla ricerca, alla gestione dei laboratori e dei finanziamenti per la ricerca, per la programmazione delle risorse e per i reclutamenti.",
+      "<strong>Un coordinamento competente e condiviso per l'integrazione equa delle attività accademiche e assistenziali.</strong> In tale ottica sarà perseguito un rapporto sempre più sinergico tra l'ateneo e le aziende ospedaliere e le strutture sanitarie. Ritengo fondamentale dare seguito alla previsione statutaria, istituendo un <strong>Comitato di Coordinamento per l'integrazione delle attività accademiche e assistenziali dei docenti di area medica</strong>, partecipato dai Presidi delle facoltà mediche e presieduto da una figura di elevato profilo, con elevata competenza, qualità, autorevolezza ed equilibrio.",
+      "<strong>La sfida dei grandi ospedali per promuovere la qualità dell'integrazione tra attività accademiche e assistenziali.</strong> Il progetto di ristrutturazione del <strong>Policlinico Umberto I</strong> prevede la demolizione e ricostruzione di vari edifici per creare un unico grande monoblocco ospedaliero e la realizzazione di un moderno campus con un investimento stimato di circa <strong>1 miliardo di euro</strong>. Il ruolo dell'Ateneo dovrà essere centrale per garantire un'integrazione equilibrata tra assistenza clinica, ricerca, accademia e innovazione. Le opportunità che si apriranno con la dismissione delle strutture assistenziali dell'attuale Policlinico potranno essere valorizzate per la creazione di spazi e laboratori di qualità per la ricerca scientifica nelle scienze mediche, aule, spazi studio, spazi dedicati a servizi per la comunità accademica."
+    ]
+  },
+
+  didattica: {
+    cluster: "Campus, Studenti & Benessere",
+    title: "Didattica innovativa, sostenibile e internazionale, diritto allo studio e lavoro",
+    paragraphs: [
+      "In accordo con la propria Carta dei diritti e dei doveri delle studentesse e degli studenti, Sapienza promuove l'<strong>accesso universale alla formazione</strong>. La visione per La Sapienza del terzo millennio mette al centro la qualità dell'esperienza formativa e la crescita della persona. L'azione programmatica si articola intorno a: (i) rimettere al centro l'esperienza studentesca con dialogo continuo con le rappresentanze; (ii) promuovere l'innovazione nei metodi didattici; (iii) dare maggiore centralità ai singoli Corsi di Studio (CdS); (iv) intercettare le peculiarità del territorio; (v) consolidare le sinergie con il tessuto produttivo; (vi) rafforzare gli strumenti di orientamento e tutoraggio.",
+      "<strong>Una comunità studentesca in continua crescita.</strong> Nell'ultimo sessennio, l'ateneo ha assistito a una crescita continua del numero di studenti: <strong>da poco meno di 113.000 nel 2020 tocca i quasi 126.000 nel 2026</strong>. Il numero medio di studenti per docente è passato da circa 34 a quasi 36. Il dato più critico è certamente legato alla riduzione del personale tecnico amministrativo. La sfida è in primo luogo legata al <strong>potenziamento del personale tecnico-amministrativo</strong> in dotazione ai Dipartimenti dedicato al supporto della didattica. Strumenti e piattaforme digitali di ausilio dovranno essere interoperabili e basarsi su un unico data-base di Ateneo.",
+      "<strong>Studentesse e studenti al centro del diritto allo studio.</strong> Il supporto alla comunità studentesca supera la sola dimensione del sostegno economico. Si dovrà puntare a un potenziamento strutturale dei servizi di welfare, attraverso: infrastrutture e logistica (alloggi, borse, aule, welfare abitativo — tavolo permanente con Regione Lazio e Comune per voucher affitto); supporto alla persona (tutorato, <strong>salute psicofisica e benessere degli studenti</strong>, servizi per disabilità e DSA); integrazione culturale e contrasto alla dispersione. Sarà rafforzato il sistema di tutorato alla pari per dare sostegno a tutti e a tutte.",
+      "<strong>Servizi, spazi e qualità dell'esperienza universitaria.</strong> Fondamentale sarà un sistema di <strong>gestione integrata delle aule</strong> attraverso una piattaforma comune basata su intelligenza artificiale, per la costruzione dell'orario delle lezioni che garantisca una distribuzione equilibrata del carico formativo agli studenti e ai docenti. Sarà data particolare attenzione alla <strong>cura e messa a disposizione di spazi per lo studio</strong> attraverso un sistema IoT che segnali la presenza di postazioni vacanti. Centrale è il tema degli spazi comuni, per favorire il networking tra gli studenti.",
+      "<strong>Didattica telematica e IA a supporto della didattica.</strong> L'Ateneo Telematico <strong>UniTelma Sapienza</strong> è già un asset strategico da valorizzare: non come entità separata, ma come laboratorio di innovazione per sviluppare modelli ibridi — <em>blended learning</em> — che integrino presenza e distanza. Il <strong>Digital Education Hub (DEH)</strong>, già in sperimentazione, porta avanti tecniche come il <em>Retrieval-Augmented Generation (chat-botxRAG)</em> per l'e-tutoring, da rendere disponibili a tutti gli ambiti disciplinari. Il <strong>CORIT</strong> dovrà essere valorizzato, sostenendo un approccio <em>bottom-up</em> che promuova le progettualità e le proposte dei singoli corsi di studio.",
+      "<strong>Un piano straordinario per l'internazionalizzazione e il terzo livello della formazione.</strong> L'internazionalizzazione della didattica richiede: pianificazione strategica delle aree geografiche; revisione del processo di reclutamento degli studenti internazionali; <strong>certificazione C1 per i docenti</strong> di CdS erogati interamente in lingua inglese (Centro Linguistico di Ateneo CLA); azioni per aumentare studenti <em>outgoing</em>. Per la formazione dottorale (IDT/ANVUR): percorsi interdisciplinari, competenze trasversali, integrità della ricerca, potenziamento della produttività scientifica dei dottorandi; <strong>incremento della Borsa di Dottorato</strong> con un massimo e un minimo stabiliti a livello di ateneo; monitoraggio degli esiti occupazionali dei dottori di ricerca."
+    ]
+  },
+
+  campus: {
+    cluster: "Campus, Studenti & Benessere",
+    title: "Edilizia, sostenibilità, spazi e strutture di qualità — Il Campus Sapienza 5.0",
+    paragraphs: [
+      "Ritengo strategico definire e attuare un piano strutturato di interventi ed investimenti finalizzati alla <strong>riqualificazione, manutenzione e valorizzazione del patrimonio</strong> edilizio e degli impianti ed infrastrutture tecnologiche. Il sovraccarico di lavoro e il sottodimensionamento della struttura tecnico-amministrativa che fa capo all'area di gestione edilizia rappresentano un collo di bottiglia importante. Particular attenzione dovrà essere rivolta alle <strong>esigenze delle studentesse e degli studenti</strong>, soprattutto di quelli fuori sede.",
+      "<strong>Sicurezza, accessibilità e pianificazione degli interventi.</strong> Sarà data priorità alla sicurezza degli ambienti (safety e security), all'adeguamento normativo e all'<strong>abbattimento delle barriere architettoniche</strong>. La complessità del <strong>piano BEI</strong>, che dovrà completarsi nel 2027-28, vede ancora interventi da sbloccare che oramai sono in fase interlocutoria da anni — tra questi vi sono il <strong>C10, Borghetto Flaminio, le aule per la didattica, le residenze</strong>. Dovrà essere elaborato un piano straordinario per l'edilizia didattica per la riqualificazione, efficientamento e ridistribuzione logistica degli spazi.",
+      "<strong>Sicurezza nei luoghi di lavoro.</strong> Sarà fondamentale potenziare l'intero impianto della salute e sicurezza nei luoghi di lavoro. Per conseguire questo obiettivo sarà fondamentale investire in un piano di reclutamento di figure specializzate per costituire un <strong>team di Addetti al Servizio di Prevenzione e Protezione (ASPP)</strong>, volto a supportare l'attività dei Responsabili (RSPP) e a collaborare attivamente con i Direttori di Dipartimento e di Centro, e con Presidi di Facoltà (modello adottato da altri grandi atenei come <strong>Napoli Federico II o Bologna</strong>). Sarà infine strategica l'attivazione di un <strong>servizio dedicato all'interno dell'Area Gestione Edilizia</strong>, finalizzato alla tempestiva risoluzione delle criticità.",
+      "<strong>Il Campus Sapienza 5.0.</strong> Il <em>campus Sapienza 5.0</em> consiste nella trasformazione, in termini di transizione energetica e digitale, del campus universitario in <strong>laboratorio di sostenibilità e in struttura ad alta efficienza energetica</strong>. Con oltre <strong>21 MW di potenza e un consumo annuo di 35 GWh</strong> delle reti elettriche, la Sapienza è tra gli utenti più energivori di Roma. L'obiettivo è realizzare un <strong>ateneo interconnesso multisito</strong>: rete energetica intelligente e integrata; flessibilità energetica totale (parco fotovoltaico, sistemi di accumulo diffusi, gestione predittiva dei consumi tramite IA/ML/IoT); le reti elettriche trasformate in <em>smart grid</em> diffuse. Sperimentando i nuovi modelli di business delle <strong>Comunità Energetiche Rinnovabili (CER)</strong>, Sapienza si porrà come punto di riferimento scientifico a livello nazionale e internazionale — la più importante e flessibile <em>smart grid</em> della città."
+    ]
+  },
+
+  multicampus: {
+    cluster: "Campus, Studenti & Benessere",
+    title: "Modello multicampus: investire nelle sedi decentrate e nelle sedi esterne",
+    paragraphs: [
+      "Sapienza si articola in <strong>36 sedi nella città di Roma</strong> e in 2 sedi esterne, rispettivamente a Latina e a Rieti, oltre ai 2 policlinici universitari. Le sedi decentrate e i poli territoriali universitari rappresentano componenti preziose dell'identità della Sapienza e del suo rapporto con il territorio. Esse costituiscono presidi di didattica, ricerca e impatto sociale e devono essere potenziate attraverso una <strong>strategia di sviluppo dedicata</strong>.",
+      "<strong>Il modello multicampus.</strong> Il concetto di multicampus proiettato nella dimensione di Ateneo 5.0 sarà basato sulla realizzazione di una <strong>unica piattaforma informatica</strong> per consentire la gestione e il monitoraggio degli edifici, delle aule e dei laboratori delle sedi decentrate in tempi contingentati e in modo efficiente. Dovrà essere garantito alle sedi decentrate <strong>accesso equo ai servizi, alle infrastrutture e alle piattaforme strumentali</strong> condivise dell'Ateneo. Agli interventi edili e infrastrutturali nelle sedi decentrate dovrà essere data urgenza laddove lo stato di degrado rappresenta un ostacolo alla piena fruizione delle sedi.",
+      "<strong>Il polo universitario di Latina.</strong> La sede distaccata di Latina (coordinata dal centro Ce.R.S.I.Te.S.) rappresenta un modello di riferimento per gli insediamenti universitari periferici. Gli interventi da realizzare devono essere mirati anche a migliorare la fruibilità attraverso l'implementazione di un <strong>modello di <em>smart campus</em> diffuso</strong>. Elemento essenziale è la <strong>creazione di un <em>digital twin</em> del polo pontino</strong> che consenta di monitorare in tempo reale i trasporti, l'occupazione delle aule studio, la disponibilità dei laboratori e l'efficienza energetica degli edifici. Un secondo aspetto è il <strong>collegamento tra le sedi universitarie e la stazione ferroviaria di Latina Scalo</strong>: realizzazione di una linea dedicata di navette a trazione elettrica affiancata da una rete di veicoli elettrici in sharing.",
+      "<strong>Il polo universitario di Rieti.</strong> Il nuovo insediamento universitario è presieduto dal Dipartimento <strong>BESSa</strong> di recente istituzione, con vocazione altamente multidisciplinare. A fianco del dipartimento BeSSA è opportuno menzionare la presenza del centro <strong>Ce.Sa.Ri.</strong> A livello di governance risulterà strategico istituire un <strong>Comitato di coordinamento per le sedi esterne di Sapienza</strong>, composto dai delegati della Rettrice per ciascuna di esse e dai Direttori delle strutture organizzative locali (Dipartimenti e Centri). Sarà opportuno <strong>regolamentare la tipologia di dipartimento multidisciplinare</strong>, per quanto attiene all'attribuzione dei finanziamenti per la ricerca, al riconoscimento dei carichi didattici, alla distribuzione delle risorse."
+    ]
+  },
+
+  sport: {
+    cluster: "Campus, Studenti & Benessere",
+    title: "Sport, cultura, socialità e benessere",
+    paragraphs: [
+      "Lo sport, la cultura e la socialità non costituiscono elementi accessori della vita universitaria, ma <strong>componenti essenziali della qualità della vita accademica e del benessere</strong> di studentesse, studenti, personale docente, tecnico-amministrativo, bibliotecario e socio-sanitario. Un ambiente accogliente, vitale e inclusivo è condizione imprescindibile per l'eccellenza nella formazione e nella ricerca: è nella cura degli spazi, dei tempi e delle relazioni che si rafforza il senso di appartenenza alla comunità.",
+      "<strong>Cultura e patrimonio.</strong> Sapienza custodisce un patrimonio culturale di straordinaria ricchezza. Sarà valorizzato il contributo di esperienze uniche come: <strong>MuSa – Musica Sapienza</strong>, che dal 2006 riunisce studentesse, studenti, docenti e personale tecnico-amministrativo nelle proprie orchestre; <strong>Theatron – Teatro antico alla Sapienza</strong>, che dal 2010 traduce e porta in scena i testi del teatro greco e latino. Assume valore strategico la piena valorizzazione del <strong>Teatro di Ateneo</strong>, luogo storico della vita teatrale universitaria, da restituire stabilmente alla comunità come spazio aperto di produzione e di programmazione. Fondamentale è la partecipazione di Sapienza al <strong>Centro di eccellenza del DTC Lazio</strong> e al partenariato esteso <strong>CHANGES</strong>.",
+      "<strong>Sport e attività motoria.</strong> <strong>Sapienza Sport</strong> dovrà essere potenziata e valorizzata, trasformata in vero e proprio campus sportivo per le studentesse e gli studenti, che possano trovarvi un ambiente accogliente ed ospitale, dotato di strutture sportive di eccellenza, ma anche <strong>aule studio e spazi di socializzazione e condivisione</strong>. L'Ateneo dovrà fornire maggiore sostegno a questa importante realtà, impegnandosi nel rinnovo della concessione in scadenza e sostenendolo con risorse sufficienti. Sarà prevista l'attuazione di un <strong>piano di mobilità sostenibile</strong> per il collegamento alle sedi dell'Ateneo.",
+      "<strong>Spazi e socialità.</strong> Cruciale sarà la creazione e riqualificazione di <strong>spazi di studio, incontro e condivisione</strong>, quali ad esempio aule studio, sale lettura, aree verdi, luoghi di ristoro e di aggregazione, distribuiti tra la Città Universitaria, i poli e le sedi decentrate, affinché a tutte e a tutti siano garantiti tempi e luoghi adeguati allo studio, al lavoro e alla vita di relazione. La gestione di questi spazi potrà avvalersi di strumenti digitali e di sistemi intelligenti di monitoraggio.",
+      "<strong>Benessere e salute.</strong> Sarà data continuità al <strong>rafforzamento dei servizi di ascolto e supporto psicologico e di assistenza sanitaria</strong>, promozione di una cultura della prevenzione e di stili di vita sani, attenzione alla conciliazione dei tempi di vita, studio e lavoro e al benessere organizzativo del personale.",
+      "<strong>Inclusione e accessibilità.</strong> Le opportunità sportive, culturali e sociali dovranno essere effettivamente <strong>fruibili da tutte le componenti, rimuovendo ogni barriera fisica o sostanziale e rifiutando ogni forma di discriminazione</strong>, in coerenza con i valori di equità e inclusione e con i principi costituzionali che ispirano l'intera azione di governo. Particolare attenzione sarà dedicata alla piena accessibilità degli spazi e delle attività per le persone con disabilità e con disturbi specifici dell'apprendimento."
+    ]
+  }
+
+};
+
+function toggleCell(el) { el.classList.toggle('open'); }
+
+function openModal(event, key) {
+  event.stopPropagation();
+  const sec = S[key];
+  if (!sec) return;
+  document.getElementById('modal-cluster').textContent = sec.cluster || '';
+  document.getElementById('modal-title').textContent = sec.title;
+  const mc = document.getElementById('modal-content');
+  mc.innerHTML = '';
+  (sec.paragraphs || []).forEach(t => {
+    const p = document.createElement('p');
+    p.innerHTML = t;
+    mc.appendChild(p);
+  });
+  document.getElementById('overlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+function closeOnOverlay(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
