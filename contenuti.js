@@ -30,32 +30,7 @@ window.SITE_DATA = {
       "dettagli": ""
     }
   ],
-  "faq": [
-    {
-      "domanda": "Quali sono i valori portanti della candidatura?",
-      "risposta": "Autorevolezza, partecipazione, inclusione e internazionalizzazione. Sono i quattro pilastri della visione \"La Sapienza del Terzo Millennio\", orientata a una comunità plurale che costruisce insieme il futuro dell'Ateneo."
-    },
-    {
-      "domanda": "Come è strutturato il programma?",
-      "risposta": "Il programma si articola in 15 aree tematiche raggruppate in 4 cluster: Governance & Persone; Digitale, IA & Internazionale; Ricerca, Missioni & Salute; Campus, Studenti & Benessere. Ogni area contiene obiettivi e proposte concrete, esplorabili nella mappa contestuale."
-    },
-    {
-      "domanda": "Come affronta il programma la fase post-PNRR?",
-      "risposta": "La sostenibilità della ricerca oltre il PNRR è un tema centrale: consolidare risorse, qualità e strutture create in questi anni, evitando la dispersione dei risultati e delle competenze acquisite dai grandi progetti nazionali."
-    },
-    {
-      "domanda": "Che spazio hanno studentesse e studenti nel programma?",
-      "risposta": "Il cluster \"Campus, Studenti & Benessere\" affronta didattica innovativa e diritto allo studio, edilizia e sostenibilità (Campus 5.0), il modello multicampus con le 36 sedi e i poli di Latina e Rieti, e sport, cultura, socialità e benessere."
-    },
-    {
-      "domanda": "Come si affronta il tema del digitale e dell'intelligenza artificiale?",
-      "risposta": "È previsto un percorso verso un \"Ateneo Digitale & Intelligenza Artificiale\", con investimenti su infrastrutture, servizi e una comunicazione all'altezza di un ateneo moderno, insieme a una leadership europea nell'internazionalizzazione."
-    },
-    {
-      "domanda": "Dove posso leggere il programma completo?",
-      "risposta": "Il testo integrale è disponibile nella sezione <a href=\"#documenti\">Documenti</a> in formato PDF, e la mappa interattiva permette di navigare tutte le aree e i cluster."
-    }
-  ],
+  "faq": [],
   "stampa": [
     {
       "testata": "Testata",
