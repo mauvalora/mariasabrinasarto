@@ -1,8 +1,8 @@
-# Deploy di `mariasabrinasarto.net` su GitHub Pages
+# Deploy di `mariasabrinasarto.it` su GitHub Pages
 
 Procedura completa per pubblicare il sito statico contenuto in questa cartella
 (`sito-deploy/`) su **GitHub Pages** con dominio personalizzato
-`mariasabrinasarto.net`.
+`mariasabrinasarto.it`.
 
 I comandi vanno eseguiti in un terminale **posizionato dentro questa cartella**
 (`sito-deploy/`), su un computer con `git` e la GitHub CLI (`gh`) installati.
@@ -19,11 +19,11 @@ I comandi vanno eseguiti in un terminale **posizionato dentro questa cartella**
 
 ```
 sito-deploy/
-├── index.html              ← pagina principale (og:url già = https://mariasabrinasarto.net)
+├── index.html              ← pagina principale (og:url già = https://mariasabrinasarto.it)
 ├── gestione.html           ← editor contenuti (agenda/FAQ/rassegna)
 ├── mappa-contestuale.html  ← mappa interattiva
 ├── contenuti.js            ← contenuti modificabili
-├── CNAME                   ← contiene: mariasabrinasarto.net  (NON rinominare)
+├── CNAME                   ← contiene: mariasabrinasarto.it  (NON rinominare)
 ├── anteprima-social.png    ← immagine anteprima condivisioni
 ├── logo.png / logo-web.png
 ├── LEGGIMI.md
@@ -40,20 +40,20 @@ personalizzato: deve restare nella root del repository.
 ## 1. Verificare la disponibilità del dominio
 
 ```bash
-whois mariasabrinasarto.net | grep -iE "no match|not found|status|registrar"
+whois mariasabrinasarto.it | grep -iE "no match|not found|status|registrar"
 ```
 
 - "No match for" / "NOT FOUND" → dominio **libero**, si può registrare.
 - Altrimenti è già registrato: controlla `Registrar` ed eventuale `Expiry Date`.
 
-(In alternativa: `dig +short NS mariasabrinasarto.net` — se non restituisce nulla
+(In alternativa: `dig +short NS mariasabrinasarto.it` — se non restituisce nulla
 di solito è libero.)
 
 ---
 
 ## 2. Registrare il dominio  (passaggio MANUALE)
 
-GitHub **non** vende domini. Acquista `mariasabrinasarto.net` presso un registrar
+GitHub **non** vende domini. Acquista `mariasabrinasarto.it` presso un registrar
 (Cloudflare, Namecheap, GoDaddy, Aruba… ~10–15 €/anno) con la tua carta.
 Poi prosegui.
 
@@ -99,12 +99,12 @@ gh api -X POST repos/mauvalora/mariasabrinasarto/pages \
 
 # imposta il dominio personalizzato (il file CNAME lo rende già persistente)
 gh api -X PUT repos/mauvalora/mariasabrinasarto/pages \
-  -f "cname=mariasabrinasarto.net"
+  -f "cname=mariasabrinasarto.it"
 ```
 
 In alternativa via interfaccia web: repo → **Settings → Pages** → *Source:
 Deploy from a branch* → **main** / **/(root)** → Save; poi *Custom domain* →
-`mariasabrinasarto.net`.
+`mariasabrinasarto.it`.
 
 Il sito provvisorio è intanto su: `https://mauvalora.github.io/mariasabrinasarto`
 
@@ -128,8 +128,8 @@ Nel pannello DNS del registrar crea:
 Verifica la propagazione (può richiedere da minuti a ~24 h):
 
 ```bash
-dig +short mariasabrinasarto.net        # deve mostrare i 4 IP 185.199.10x.153
-dig +short www.mariasabrinasarto.net    # deve mostrare mauvalora.github.io
+dig +short mariasabrinasarto.it        # deve mostrare i 4 IP 185.199.10x.153
+dig +short www.mariasabrinasarto.it    # deve mostrare mauvalora.github.io
 ```
 
 ---
@@ -146,7 +146,7 @@ gh api -X PUT repos/mauvalora/mariasabrinasarto/pages \
 
 Oppure spunta **Enforce HTTPS** nella pagina Settings → Pages.
 
-Fatto: il sito è online su **https://mariasabrinasarto.net** (e `www` reindirizza).
+Fatto: il sito è online su **https://mariasabrinasarto.it** (e `www` reindirizza).
 
 ---
 
@@ -171,4 +171,4 @@ gh api repos/mauvalora/mariasabrinasarto/pages   # stato Pages, dominio, HTTPS, 
 - Errore dominio "not properly configured" → DNS non ancora propagato (attendi).
 - 404 dopo il push → controlla che `index.html` sia nella root del repo.
 - Anteprima social errata → verifica `og:url` in `index.html`
-  (`https://mariasabrinasarto.net`).
+  (`https://mariasabrinasarto.it`).
