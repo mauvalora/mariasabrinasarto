@@ -31,18 +31,5 @@ window.SITE_DATA = {
     }
   ],
   "faq": [],
-  "stampa": [
-    {
-      "testata": "Testata",
-      "titolo": "Titolo dell'articolo o dell'intervista",
-      "data": "gg mese 2026",
-      "url": ""
-    },
-    {
-      "testata": "Testata",
-      "titolo": "Titolo dell'articolo o dell'intervista",
-      "data": "gg mese 2026",
-      "url": ""
-    }
-  ]
+  "stampa": []
 };
