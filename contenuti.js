@@ -204,6 +204,12 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "21",
+      "mese": "Luglio",
+      "titolo": "CNIS incontra la Prof. ssa Maria Sabrina Sarto",
+      "dettagli": "Aula Marino Zuco (CU016), ore 10_00-12:00\nSarà un'occasione preziosa di dialogo aperto sui temi che daranno forma al futuro del nostro Ateneo: la ricerca interdisciplinare, le infrastrutture di ricerca, il trasferimento tecnologico, le grandi progettualità nazionali ed europee e il ruolo dei centri interdipartimentali come il CNIS. Questi aspetti si inseriscono in un più ampio percorso di riorganizzazione dell'Ateneo, orientato a promuovere una maggiore integrazione tra competenze e strutture, superando l'attuale frammentazione organizzativa e valorizzando le sinergie tra le diverse missioni dell'Università."
+    },
+    {
       "giorno": "15",
       "mese": "Settembre",
       "titolo": "Aula Magna, 10:00. Dibattito pubblico",
