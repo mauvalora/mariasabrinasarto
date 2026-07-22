@@ -225,16 +225,57 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
-      "testata": "Testata",
-      "titolo": "Titolo dell'articolo o dell'intervista",
-      "data": "gg mese 2026",
-      "url": ""
+      "testata": "Il Messaggero",
+      "titolo": "Roma, Sapienza: candidati rettore e programmi",
+      "data": "14 luglio 2026",
+      "url": "https://www.ilmessaggero.it/roma/centro_storico/roma_sapienza_candidati_rettore_programmi-9649760.html"
     },
     {
-      "testata": "Testata",
-      "titolo": "Titolo dell'articolo o dell'intervista",
-      "data": "gg mese 2026",
-      "url": ""
+      "testata": "Corriere della Sera",
+      "titolo": "Elezioni alla Sapienza, cinque candidati alla carica di rettore per i prossimi sei anni: i nomi, i programmi",
+      "data": "14 luglio 2026",
+      "url": "https://roma.corriere.it/notizie/cronaca/26_luglio_14/sapienza-cinque-candidati-alla-carica-di-rettore-per-i-prossimi-sei-anni-i-nomi-i-programmi-722f85e4-390b-4402-9c9b-b9fb26134xlk.shtml"
+    },
+    {
+      "testata": "Sapienza Video Istituzionale",
+      "titolo": "Elezioni del/della Rettore/Rettrice 2026/2032 – Presentazione dei candidati",
+      "data": "13 luglio 2026",
+      "url": "https://www.youtube.com/watch?v=I5osSxUaASA"
+    },
+    {
+      "testata": "ANSA",
+      "titolo": "Cinque i candidati alla successione di Polimeni alla Sapienza",
+      "data": "25 giugno 2026",
+      "url": "https://www.ansa.it/sito/notizie/cronaca/2026/06/25/cinque-i-candidati-alla-successione-di-polimeni-alla-sapienza_b9708cb2-1e63-4cbe-93a8-b608f9e4e812.html"
+    },
+    {
+      "testata": "Sapienza Università di Roma",
+      "titolo": "Elezioni del/della Rettore/Rettrice 2026-2032",
+      "data": "19 maggio 2026",
+      "url": "https://www.uniroma1.it/it/pagina/elezioni-rettore-2026"
+    },
+    {
+      "testata": "RadioSapienza",
+      "titolo": "Rettorato Sapienza 2026: ufficializzate date e modalità delle elezioni",
+      "data": "12 maggio 2026",
+      "url": "https://www.radiosapienza.net/rettorato-sapienza-2026-ufficializzate-date-e-modalita-delle-elezioni/"
+    },
+    {
+      "testata": "Roma Tre Radio (YouTube)",
+      "titolo": "Intervista a MARIA SABRINA SARTO, Coordinatrice del Centro di Eccellenza DTC Lazio",
+      "data": "11 febbraio 2020",
+      "url": "https://share.google/o3ylKeT69mNgRcDDc"
+    },
+    {
+      "testata": "YouTube",
+      "titolo": "Cosa sono i Flagship Projects? ",
+      "data": "16 gennaio 2024",
+      "url": "https://share.google/yuZtqlF5ZgIhaA9YV"
+    },
+    {
+      "testata": "WikiPedia IT",
+      "titolo": "Maria Sabrina Sarto",
+      "url": "https://en.wikipedia.org/wiki/Maria_Sabrina_Sarto"
     }
   ]
 };
