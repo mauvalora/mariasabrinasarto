@@ -27,9 +27,11 @@ sito-deploy/
 ├── anteprima-social.png    ← immagine anteprima condivisioni
 ├── logo.png / logo-web.png
 ├── LEGGIMI.md
-└── documenti/
-    ├── programma-sarto-2026.pdf
-    └── cv-maria-sabrina-sarto.pdf
+├── documenti/
+│   ├── programma-sarto-2026.pdf
+│   ├── cv-maria-sabrina-sarto.pdf
+│   └── riconoscimenti/         ← premi/articoli mostrati nella sezione "Riconoscimenti"
+└── galleria/                   ← foto mostrate nella sezione "Galleria"
 ```
 
 Il file **`CNAME`** è ciò che dice a GitHub Pages di servire il sito sul dominio

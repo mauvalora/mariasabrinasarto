@@ -209,6 +209,29 @@ section { padding: 56px 0; }
 .press-item h4 { font-size: 15px; font-weight: 600; margin: 6px 0 8px; line-height: 1.4; }
 .press-item .date { font-size: 12px; color: var(--muted); }
 
+/* ── DOCUMENTI / RICONOSCIMENTI ── */
+.doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.doc-item { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform .18s, box-shadow .18s, border-color .18s; }
+.doc-item:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(107,26,42,.12); border-color: #d9b3ba; }
+.doc-item .thumb { aspect-ratio: 4/3; background: #f1f1f4; overflow: hidden; }
+.doc-item .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.doc-item .thumb.pdf { display: flex; align-items: center; justify-content: center; font-size: 40px; }
+.doc-item .body { padding: 16px 18px; }
+.doc-item .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--burgundy-2); }
+.doc-item h4 { font-size: 14.5px; font-weight: 700; margin: 6px 0 6px; line-height: 1.35; }
+.doc-item p { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+.doc-item .date { font-size: 11.5px; color: var(--muted); }
+
+/* ── GALLERIA ── */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.gallery-item { aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #f1f1f4; cursor: zoom-in; padding: 0; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s; }
+.gallery-item:hover img { transform: scale(1.06); }
+.lightbox { position: fixed; inset: 0; background: rgba(26,29,46,.92); display: none; align-items: center; justify-content: center; z-index: 300; padding: 30px; }
+.lightbox.show { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.lightbox .lb-close { position: absolute; top: 20px; right: 26px; color: #fff; font-size: 32px; line-height: 1; cursor: pointer; background: none; border: 0; }
+
 /* ── VOTO ── */
 .voto-box {
   background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px 32px;
@@ -264,6 +287,8 @@ section { padding: 56px 0; }
       <a href="#mappa">Mappa</a>
       <a href="#percorso">Percorso</a>
       <a href="#documenti">Documenti</a>
+      <a href="#riconoscimenti">Riconoscimenti</a>
+      <a href="#galleria">Galleria</a>
       <a href="#faq">FAQ</a>
       <a href="#agenda">Agenda</a>
       <a href="#stampa">Stampa</a>
@@ -386,6 +411,24 @@ section { padding: 56px 0; }
         <a class="btn secondary" href="documenti/cv-maria-sabrina-sarto.pdf" target="_blank" rel="noopener">Apri PDF</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="riconoscimenti" style="background:#fbfbfd; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="section-eyebrow">Riconoscimenti</div>
+    <h2 class="section-title">Premi, onorificenze e rassegna</h2>
+    <p class="section-lead">Premi scientifici, onorificenze internazionali e articoli che documentano il percorso professionale della candidata.</p>
+    <div class="doc-grid" id="doc-grid"></div>
+  </div>
+</section>
+
+<section id="galleria">
+  <div class="container">
+    <div class="section-eyebrow">Galleria</div>
+    <h2 class="section-title">Foto della campagna</h2>
+    <p class="section-lead">Immagini degli incontri con la comunità accademica e dei momenti della candidatura.</p>
+    <div class="gallery-grid" id="gallery-grid"></div>
   </div>
 </section>
 
@@ -538,6 +581,56 @@ section { padding: 56px 0; }
             : inner;
         }).join("")
       : '<p class="section-lead" style="margin:0;">Nessun articolo disponibile al momento.</p>';
+  }
+
+  // ── RICONOSCIMENTI / DOCUMENTI ──
+  var dg = document.getElementById("doc-grid");
+  if (dg) {
+    var doc = D.riconoscimenti || [];
+    dg.innerHTML = doc.length
+      ? doc.map(function (d) {
+          var isPdf = /\.pdf$/i.test(d.file || "");
+          var thumb = isPdf
+            ? '<div class="thumb pdf">📄</div>'
+            : '<div class="thumb"><img src="' + esc(d.file) + '" alt="' + esc(d.titolo) + '" loading="lazy"></div>';
+          return '<a class="doc-item" href="' + esc(d.file) + '" target="_blank" rel="noopener">' + thumb +
+                 '<div class="body"><div class="cat">' + esc(d.categoria) + '</div><h4>' + esc(d.titolo) + '</h4>' +
+                 '<p>' + esc(d.descrizione) + '</p><div class="date">' + esc(d.data) + '</div></div></a>';
+        }).join("")
+      : '<p class="section-lead" style="margin:0;">Nessun documento disponibile al momento.</p>';
+  }
+
+  // ── GALLERIA FOTO ──
+  var gg = document.getElementById("gallery-grid");
+  if (gg) {
+    var gal = D.galleria || [];
+    gg.innerHTML = gal.length
+      ? gal.map(function (g, i) {
+          return '<button type="button" class="gallery-item" data-idx="' + i + '"><img src="' + esc(g.file) + '" alt="' + esc(g.didascalia || g.titolo || "") + '" loading="lazy"></button>';
+        }).join("")
+      : '<p class="section-lead" style="margin:0;">La galleria fotografica sarà aggiornata a breve.</p>';
+
+    // lightbox
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.innerHTML = '<button type="button" class="lb-close" aria-label="Chiudi">&times;</button><img alt="">';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector("img");
+    function openLb(i) {
+      var item = gal[i]; if (!item) return;
+      lbImg.src = item.file; lbImg.alt = item.didascalia || item.titolo || "";
+      lb.classList.add("show");
+    }
+    gg.addEventListener("click", function (ev) {
+      var btn = ev.target.closest(".gallery-item");
+      if (btn) openLb(parseInt(btn.getAttribute("data-idx"), 10));
+    });
+    lb.addEventListener("click", function (ev) {
+      if (ev.target === lb || ev.target.classList.contains("lb-close")) lb.classList.remove("show");
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") lb.classList.remove("show");
+    });
   }
 })();
 </script>

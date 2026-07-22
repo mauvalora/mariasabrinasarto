@@ -277,5 +277,57 @@ window.SITE_DATA = {
       "titolo": "Maria Sabrina Sarto",
       "url": "https://en.wikipedia.org/wiki/Maria_Sabrina_Sarto"
     }
-  ]
+  ],
+  "riconoscimenti": [
+    {
+      "titolo": "IEEE EMC Society – Prize Paper Award 1997",
+      "categoria": "Premio scientifico",
+      "data": "Agosto 1997",
+      "descrizione": "Premio per il miglior articolo \"Theory of Field-Excited Networks\", IEEE Transactions on Electromagnetic Compatibility, vol. 38, n. 3.",
+      "file": "documenti/riconoscimenti/ieee-emc-prize-paper-award-1997.jpg"
+    },
+    {
+      "titolo": "IEEE EMC Society Newsletter – Personality Profile",
+      "categoria": "Rivista",
+      "data": "Autunno 1997",
+      "descrizione": "Profilo personale \"Introducing Maria Sabrina Sarto\", IEEE EMC Society Newsletter n. 175.",
+      "file": "documenti/riconoscimenti/ieee-emc-newsletter-profilo-1997.jpg"
+    },
+    {
+      "titolo": "IEEE EMC Society – Transactions Prize Paper Award 2000",
+      "categoria": "Premio scientifico",
+      "data": "Maggio 2000",
+      "descrizione": "Premio per l'articolo, con M. D'Amore, \"Theoretical and Experimental Characterization of the EMP-Interaction with Composite-Metallic Enclosures\", IEEE Transactions on EMC, vol. 42, n. 2.",
+      "file": "documenti/riconoscimenti/ieee-emc-transactions-prize-paper-award-2000.jpg"
+    },
+    {
+      "titolo": "SAE Wright Brothers Medal",
+      "categoria": "Premio scientifico",
+      "data": "7 novembre 2002",
+      "descrizione": "Medaglia della Society of Automotive Engineers per il miglior articolo su invenzione, sviluppo, progettazione o operazione di velivoli e veicoli spaziali.",
+      "file": "documenti/riconoscimenti/sae-wright-brothers-medal-2002.jpg"
+    },
+    {
+      "titolo": "IEEE EMC Society – Certificate of Appreciation",
+      "categoria": "Riconoscimento",
+      "data": "Agosto 2003",
+      "descrizione": "Certificato di apprezzamento per il ruolo di Distinguished Lecturer 2001–2002.",
+      "file": "documenti/riconoscimenti/ieee-emc-certificate-appreciation-2003.jpg"
+    },
+    {
+      "titolo": "Nomina a IEEE Fellow",
+      "categoria": "Riconoscimento",
+      "data": "1° gennaio 2010",
+      "descrizione": "Certificato di elevazione al grado di IEEE Fellow \"for contributions to advanced materials in electromagnetic compatibility applications\".",
+      "file": "documenti/riconoscimenti/ieee-fellow-certificate-2010.jpg"
+    },
+    {
+      "titolo": "IEEE Fellow – Lettera ufficiale",
+      "categoria": "Lettera ufficiale",
+      "data": "1° gennaio 2010",
+      "descrizione": "Lettera di elevazione a IEEE Fellow a firma del Presidente e CEO IEEE Pedro A. Ray.",
+      "file": "documenti/riconoscimenti/ieee-fellow-lettera-2010.jpg"
+    }
+  ],
+  "galleria": []
 };

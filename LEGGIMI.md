@@ -7,24 +7,26 @@ Guida rapida per aggiornare e pubblicare il sito. Non serve alcun software parti
 ```
 sito/
 ├── index.html                      ← la pagina principale del sito
-├── gestione.html                   ← EDITOR: gestisce agenda, FAQ e rassegna stampa
+├── gestione.html                   ← EDITOR: gestisce agenda, FAQ, rassegna stampa, riconoscimenti e galleria
 ├── contenuti.js                    ← i contenuti modificabili (generato dall'editor)
 ├── mappa-contestuale.html          ← la mappa interattiva (versione v5)
 ├── anteprima-social.png            ← immagine mostrata quando il link è condiviso
 ├── LEGGIMI.md                      ← questa guida
-└── documenti/
-    ├── programma-sarto-2026.pdf    ← programma completo
-    └── cv-maria-sabrina-sarto.pdf  ← curriculum Europass
+├── documenti/
+│   ├── programma-sarto-2026.pdf    ← programma completo
+│   ├── cv-maria-sabrina-sarto.pdf  ← curriculum Europass
+│   └── riconoscimenti/             ← premi, onorificenze, articoli (PDF/JPG/PNG) mostrati nella sezione "Riconoscimenti"
+└── galleria/                       ← foto mostrate nella sezione "Galleria" (JPG/PNG)
 ```
 
 Tutti i collegamenti sono **relativi**: la cartella `sito/` funziona sia aperta localmente (doppio clic su `index.html`) sia caricata così com'è su un hosting.
 
-## Gestire agenda, FAQ e rassegna stampa (senza toccare il codice)
+## Gestire agenda, FAQ, rassegna stampa, riconoscimenti e galleria (senza toccare il codice)
 
-Queste tre sezioni si aggiornano tramite la pagina **`gestione.html`**, senza modificare l'HTML. Il flusso è:
+Queste cinque sezioni si aggiornano tramite la pagina **`gestione.html`**, senza modificare l'HTML. Il flusso è:
 
 1. Apri `gestione.html` nel browser (doppio clic sul file).
-2. Scegli la scheda **Agenda**, **FAQ** o **Rassegna stampa**.
+2. Scegli la scheda **Agenda**, **FAQ**, **Rassegna stampa**, **Riconoscimenti** o **Galleria**.
 3. Usa i pulsanti per **creare** (`+ Nuovo…`), **modificare**, **riordinare** (↑ ↓) o **eliminare** una voce.
 4. Premi **💾 Salva contenuti.js**:
    - Su **Chrome/Edge** puoi salvare direttamente: scegli il file `contenuti.js` nella cartella `sito/` e conferma la sostituzione.
@@ -36,6 +38,8 @@ Il pulsante **📂 Carica contenuti.js** serve a ricaricare nell'editor i conten
 I contenuti vivono tutti nel file `contenuti.js`: se preferisci, puoi anche modificarlo con un editor di testo, ma l'editor è il modo consigliato per evitare errori.
 
 > Nota FAQ: nel campo *Risposta* puoi inserire un link con `<a href="https://...">testo</a>`.
+
+> Nota Riconoscimenti/Galleria: l'editor non carica i file, salva solo il **percorso** del file (campo *File*). Prima di salvare `contenuti.js`, copia manualmente l'immagine o il PDF nella cartella `documenti/riconoscimenti/` (per i riconoscimenti) o `galleria/` (per le foto), mantenendo lo stesso nome indicato nel campo *File*.
 
 ## Cosa completare prima della pubblicazione
 
