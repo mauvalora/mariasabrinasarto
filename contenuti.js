@@ -329,5 +329,22 @@ window.SITE_DATA = {
       "file": "documenti/riconoscimenti/ieee-fellow-lettera-2010.jpg"
     }
   ],
-  "galleria": []
+  "galleria":[
+    {
+      "titolo": "Aula Magna - Presentazione Programma",
+      "didascalia": "Aula Magna - Presentazione Programma",
+      "file": "galleria/IMG_0939.jpeg"
+    },
+    {
+      "titolo": "Aula Magna - Presentazione Programma",
+      "didascalia": "Aula Magna - Presentazione Programma",
+      "file": "galleria/IMG_0944.jpeg"
+    },
+    {
+      "titolo": "Facoltà ICI",
+      "didascalia": "Facoltà ICI",
+      "file": "galleria/IMG_0979.jpeg"
+    }
+  ]
+
 };
