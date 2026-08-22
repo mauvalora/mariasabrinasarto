@@ -1,0 +1,74 @@
+# robots.txt — mariasabrinasarto.it
+# Sito della candidatura di Maria Sabrina Sarto a Rettrice della Sapienza 2026-2032.
+# Tutti i contenuti sono pubblici: l'accesso e' consentito a tutti i crawler,
+# compresi quelli dei motori di ricerca e degli assistenti basati su IA.
+
+# ── Regola generale: tutto consentito ──
+User-agent: *
+Allow: /
+
+# ── Crawler di assistenti e motori di ricerca basati su IA ──
+# (elencati esplicitamente per chiarezza: la regola generale li includerebbe comunque)
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Google (ricerca e Gemini)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Apple, Meta, Amazon, Common Crawl, DuckDuckGo
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ── Mappa del sito ──
+Sitemap: https://mariasabrinasarto.it/sitemap.xml
