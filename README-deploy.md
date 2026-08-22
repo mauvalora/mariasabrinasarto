@@ -20,9 +20,10 @@ I comandi vanno eseguiti in un terminale **posizionato dentro questa cartella**
 ```
 sito-deploy/
 ├── index.html              ← pagina principale (og:url già = https://mariasabrinasarto.it)
-├── gestione.html           ← editor contenuti (agenda/FAQ/rassegna)
+├── gestione.html           ← editor contenuti (agenda/FAQ/rassegna/riconoscimenti/galleria)
 ├── mappa-contestuale.html  ← mappa interattiva
 ├── contenuti.js            ← contenuti modificabili
+├── build.js                ← "node build.js" dopo ogni modifica ai contenuti, prima del push
 ├── CNAME                   ← contiene: mariasabrinasarto.it  (NON rinominare)
 ├── anteprima-social.png    ← immagine anteprima condivisioni
 ├── logo.png / logo-web.png
@@ -289,7 +290,19 @@ contenuti chiari e ben strutturati.
 
 ## Aggiornamenti futuri
 
-Per pubblicare modifiche, dalla cartella `sito-deploy/`:
+Se hai modificato agenda/FAQ/stampa/riconoscimenti/galleria con `gestione.html`
+(cioè hai toccato `contenuti.js`), esegui prima **una volta**:
+
+```bash
+node build.js
+```
+
+Serve a scrivere quei contenuti anche in forma statica dentro `index.html`,
+così restano visibili ai crawler che non eseguono JavaScript (vedi LEGGIMI.md,
+sezione "Un passaggio in più prima di pubblicare"). Se hai modificato solo
+`index.html` direttamente, questo passaggio non serve.
+
+Poi, per pubblicare, dalla cartella `sito-deploy/`:
 
 ```bash
 git add .

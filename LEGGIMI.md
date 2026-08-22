@@ -9,6 +9,7 @@ sito/
 ├── index.html                      ← la pagina principale del sito
 ├── gestione.html                   ← EDITOR: gestisce agenda, FAQ, rassegna stampa, riconoscimenti e galleria
 ├── contenuti.js                    ← i contenuti modificabili (generato dall'editor)
+├── build.js                        ← da eseguire dopo ogni modifica ai contenuti, prima del push (vedi sotto)
 ├── mappa-contestuale.html          ← la mappa interattiva (versione v5)
 ├── anteprima-social.png            ← immagine mostrata quando il link è condiviso
 ├── LEGGIMI.md                      ← questa guida
@@ -36,6 +37,30 @@ Queste cinque sezioni si aggiornano tramite la pagina **`gestione.html`**, senza
 Il pulsante **📂 Carica contenuti.js** serve a ricaricare nell'editor i contenuti attuali (utile se lavori da un altro computer o riprendi in un secondo momento). **👁 Anteprima sito** apre `index.html` in una nuova scheda.
 
 I contenuti vivono tutti nel file `contenuti.js`: se preferisci, puoi anche modificarlo con un editor di testo, ma l'editor è il modo consigliato per evitare errori.
+
+### Un passaggio in più prima di pubblicare: `node build.js`
+
+Agenda, FAQ, rassegna stampa, riconoscimenti e galleria vengono scritti nella
+pagina da JavaScript, leggendo `contenuti.js` al caricamento — comodo per
+l'editor, ma i motori di ricerca "semplici" e diversi assistenti basati su IA
+non eseguono JavaScript e vedrebbero quelle sezioni vuote.
+
+Per questo, **dopo** aver salvato `contenuti.js` con `gestione.html` e
+**prima** di fare `git push`, va eseguito una volta:
+
+```bash
+node build.js
+```
+
+Scrive lo stesso contenuto già pronto dentro `index.html`, cosicché sia
+visibile anche a chi non esegue JavaScript. Non cambia nulla per chi visita il
+sito normalmente: il JavaScript continua a rigenerare tutto ad ogni
+caricamento, `build.js` serve solo a chi non lo esegue. Se te ne dimentichi il
+sito funziona comunque, ma i crawler vedranno contenuti non aggiornati fino al
+prossimo build.
+
+> Se lavori con Claude in questo progetto, puoi semplicemente chiedere di
+> lanciarlo dopo ogni modifica ai contenuti: se ne occupa prima del commit.
 
 > Nota FAQ: nel campo *Risposta* puoi inserire un link con `<a href="https://...">testo</a>`.
 
