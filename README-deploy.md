@@ -224,6 +224,69 @@ Note:
 
 ---
 
+## 9. Indicizzazione e motori di ricerca (SEO)
+
+Il sito contiene già i file che servono ai crawler dei motori di ricerca e degli
+assistenti basati su IA:
+
+| File | Ruolo |
+|------|-------|
+| `robots.txt` | Consente esplicitamente l'accesso a **tutti** i bot (nessun `Disallow`), inclusi GPTBot / ChatGPT-User / OAI-SearchBot (OpenAI), Googlebot, Bingbot, ClaudeBot, PerplexityBot, Applebot. Indica anche dove trovare la sitemap. |
+| `sitemap.xml` | Elenca gli indirizzi da indicizzare: home, mappa contestuale, programma PDF, CV PDF. |
+| `<link rel="canonical">` | Presente in `index.html` e `mappa-contestuale.html`: consolida su un solo indirizzo le varianti `www` / non-`www`. |
+
+> Se aggiungi nuove pagine `.html` al sito, ricordati di inserirle in
+> `sitemap.xml` (blocco `<url><loc>…</loc></url>`) e di aggiornare la data in
+> `<lastmod>`. Le sezioni gestite da `contenuti.js` (agenda, FAQ, stampa,
+> riconoscimenti, galleria) **non** vanno aggiunte: sono parte di `index.html`.
+
+### Registrare il sito su Google Search Console
+
+Serve a far indicizzare il sito più in fretta e a vedere come Google lo legge.
+La verifica scelta è quella **per dominio** (record TXT su Aruba): copre in un
+colpo solo `mariasabrinasarto.it`, `www.mariasabrinasarto.it` ed eventuali
+sottodomini futuri.
+
+1. Vai su <https://search.google.com/search-console> e accedi con l'account
+   Google della candidatura.
+2. In alto a sinistra apri il selettore delle proprietà → **Aggiungi proprietà**.
+3. Scegli il riquadro di sinistra, **Dominio**, e inserisci:
+   `mariasabrinasarto.it` (senza `https://` e senza `www`).
+4. Google mostra un record TXT da copiare, nella forma
+   `google-site-verification=XXXXXXXXXXXXXXXXXXXXXXXX`.
+5. Area clienti **Aruba** → *I miei domini* → `mariasabrinasarto.it` →
+   **Gestione DNS**. Aggiungi un record:
+
+   | Tipo | Nome / Host | Valore | TTL |
+   |------|-------------|--------|-----|
+   | TXT  | `@` (o vuoto) | `google-site-verification=XXXX…` | auto |
+
+   Non toccare i record `A` verso GitHub né il `CNAME` di `www`: il TXT si
+   aggiunge, non sostituisce nulla.
+6. Attendi la propagazione (di solito pochi minuti) e verifica dal Mac:
+
+   ```bash
+   dig +short TXT mariasabrinasarto.it
+   ```
+
+   Deve comparire la stringa `google-site-verification=…`.
+7. Torna su Search Console e premi **Verifica**.
+8. A verifica avvenuta: menu **Sitemap** → inserisci `sitemap.xml` → **Invia**.
+
+> Il record TXT va **lasciato in permanenza**: se lo rimuovi, Google considera
+> decaduta la verifica della proprietà.
+
+### Nota sugli assistenti IA
+
+`robots.txt` non blocca nessun crawler, quindi non ci sono ostacoli tecnici alla
+lettura del sito da parte di ChatGPT e simili. Va però tenuto presente che
+l'inclusione nelle risposte di un assistente non è garantita né controllabile
+dal proprietario del sito: dipende dalle scelte di indicizzazione del fornitore.
+Quello che si può fare — ed è fatto — è non ostacolare l'accesso e pubblicare
+contenuti chiari e ben strutturati.
+
+---
+
 ## Aggiornamenti futuri
 
 Per pubblicare modifiche, dalla cartella `sito-deploy/`:
