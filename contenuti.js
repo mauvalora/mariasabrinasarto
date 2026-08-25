@@ -329,21 +329,274 @@ window.SITE_DATA = {
       "file": "documenti/riconoscimenti/ieee-fellow-lettera-2010.jpg"
     }
   ],
-  "galleria":[
+  "galleria": [
     {
-      "titolo": "Aula Magna - Presentazione Programma",
-      "didascalia": "Aula Magna - Presentazione Programma",
-      "file": "galleria/IMG_0939.jpeg"
+      "titolo": "Aula Magna – Presentazione del programma",
+      "didascalia": "Aula Magna – Presentazione del programma",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/campagna elettorale/IMG_0939.jpg"
     },
     {
-      "titolo": "Aula Magna - Presentazione Programma",
-      "didascalia": "Aula Magna - Presentazione Programma",
-      "file": "galleria/IMG_0944.jpeg"
+      "titolo": "Aula Magna – Presentazione del programma",
+      "didascalia": "Aula Magna – Presentazione del programma",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/campagna elettorale/IMG_0944.jpg"
     },
     {
-      "titolo": "Facoltà ICI",
-      "didascalia": "Facoltà ICI",
-      "file": "galleria/IMG_0979.jpeg"
+      "titolo": "Aula 1 – Facoltà ICI",
+      "didascalia": "Aula 1 – Facoltà ICI",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/campagna elettorale/IMG_0979.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_1.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_2.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_3.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_4.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_5.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026",
+      "didascalia": "Roma Smart City Awards 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_6.jpg"
+    },
+    {
+      "titolo": "Roma Smart City Awards 2026 – video",
+      "didascalia": "Roma Smart City Awards 2026 – video",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_7.mp4",
+      "tipo": "video",
+      "poster": "galleria/web/eventi istituzionali/Evento Roma Smart City Awards_2026_7.jpg"
+    },
+    {
+      "titolo": "INAIL – Evento finale del progetto DPI SMART, 2026",
+      "didascalia": "INAIL – Evento finale del progetto DPI SMART, 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/INAIL-Evento finale progetto DPI SMART_2026_1.jpg"
+    },
+    {
+      "titolo": "Maker Faire 2026",
+      "didascalia": "Maker Faire 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Maker Faire 2026_1.jpg"
+    },
+    {
+      "titolo": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "didascalia": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Presentazione bando STEP e Filiere Tecnologiche_2026_1.jpg"
+    },
+    {
+      "titolo": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "didascalia": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Presentazione bando STEP e Filiere Tecnologiche_2026_2.jpg"
+    },
+    {
+      "titolo": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "didascalia": "Presentazione del bando STEP e Filiere Tecnologiche, 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Presentazione bando STEP e Filiere Tecnologiche_2026_3.jpg"
+    },
+    {
+      "titolo": "Posa della prima pietra del Rome Technopole",
+      "didascalia": "Posa della prima pietra del Rome Technopole",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Prima pietra Rome Technopole_1.jpg"
+    },
+    {
+      "titolo": "Posa della prima pietra del Rome Technopole",
+      "didascalia": "Posa della prima pietra del Rome Technopole",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Prima pietra Rome Technopole_2.jpg"
+    },
+    {
+      "titolo": "Posa della prima pietra del Rome Technopole",
+      "didascalia": "Posa della prima pietra del Rome Technopole",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Prima pietra Rome Technopole_3.jpg"
+    },
+    {
+      "titolo": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "didascalia": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Sapienza racconta il PNRR - 20-03-2026_1.jpg"
+    },
+    {
+      "titolo": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "didascalia": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Sapienza racconta il PNRR - 20-03-2026_2.jpg"
+    },
+    {
+      "titolo": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "didascalia": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Sapienza racconta il PNRR - 20-03-2026_3.jpg"
+    },
+    {
+      "titolo": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "didascalia": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Sapienza racconta il PNRR - 20-03-2026_4.jpg"
+    },
+    {
+      "titolo": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "didascalia": "Sapienza racconta il PNRR – 20 marzo 2026",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/Sapienza racconta il PNRR - 20-03-2026_5.jpg"
+    },
+    {
+      "titolo": "Chiusura dei lavori della Commissione Ricerca – bando 2025",
+      "didascalia": "Chiusura dei lavori della Commissione Ricerca – bando 2025",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/eventi istituzionali/chiusura lavori_commissione ricerca-bando 2025.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – Dubai Marina",
+      "didascalia": "Expo 2020 Dubai – Dubai Marina",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_163912.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – Dubai Marina",
+      "didascalia": "Expo 2020 Dubai – Dubai Marina",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_164006.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – piazza delle bandiere",
+      "didascalia": "Expo 2020 Dubai – piazza delle bandiere",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_171840.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – Padiglione Italia",
+      "didascalia": "Expo 2020 Dubai – Padiglione Italia",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_175024.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – Padiglione Italia",
+      "didascalia": "Expo 2020 Dubai – Padiglione Italia",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_175034.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – allestimenti espositivi",
+      "didascalia": "Expo 2020 Dubai – allestimenti espositivi",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_180141.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – allestimenti espositivi",
+      "didascalia": "Expo 2020 Dubai – allestimenti espositivi",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_180643.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – Padiglione Giappone",
+      "didascalia": "Expo 2020 Dubai – Padiglione Giappone",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_185322.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – veduta serale del sito espositivo",
+      "didascalia": "Expo 2020 Dubai – veduta serale del sito espositivo",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_190324.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – cupola Al Wasl",
+      "didascalia": "Expo 2020 Dubai – cupola Al Wasl",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_194958.jpg"
+    },
+    {
+      "titolo": "Expo 2020 Dubai – spettacolo serale, video",
+      "didascalia": "Expo 2020 Dubai – spettacolo serale, video",
+      "sezione": "Missioni internazionali",
+      "file": "galleria/web/missioni internazionali/20220326_220102.mp4",
+      "tipo": "video",
+      "poster": "galleria/web/missioni internazionali/20220326_220102.jpg"
+    },
+    {
+      "titolo": "Le infrastrutture di ricerca del Rome Technopole sulla stampa",
+      "didascalia": "Le infrastrutture di ricerca del Rome Technopole sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_IR Rome Technopole_1.jpg"
+    },
+    {
+      "titolo": "Le infrastrutture di ricerca del Rome Technopole sulla stampa",
+      "didascalia": "Le infrastrutture di ricerca del Rome Technopole sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_IR Rome Technopole_2.jpg"
+    },
+    {
+      "titolo": "Il Rome Technopole sulla stampa",
+      "didascalia": "Il Rome Technopole sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_Rome Technopole_1.jpg"
+    },
+    {
+      "titolo": "Il Rome Technopole sulla stampa",
+      "didascalia": "Il Rome Technopole sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_Rome Technopole_3.jpg"
+    },
+    {
+      "titolo": "Il Rome Technopole sulla stampa",
+      "didascalia": "Il Rome Technopole sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_Rome Technopole_4.jpg"
+    },
+    {
+      "titolo": "Il progetto INAIL DPI SMART sulla stampa",
+      "didascalia": "Il progetto INAIL DPI SMART sulla stampa",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_progetto INAIL-DPI SMART.jpg"
+    },
+    {
+      "titolo": "Sci",
+      "didascalia": "Sci",
+      "sezione": "Hobbies",
+      "file": "galleria/web/hobbies/Sci_1.jpg"
+    },
+    {
+      "titolo": "Sci",
+      "didascalia": "Sci",
+      "sezione": "Hobbies",
+      "file": "galleria/web/hobbies/Sci_2.jpg"
+    },
+    {
+      "titolo": "Sci",
+      "didascalia": "Sci",
+      "sezione": "Hobbies",
+      "file": "galleria/web/hobbies/Sci_3.jpg"
     }
   ]
 

@@ -66,6 +66,31 @@ prossimo build.
 
 > Nota Riconoscimenti/Galleria: l'editor non carica i file, salva solo il **percorso** del file (campo *File*). Prima di salvare `contenuti.js`, copia manualmente l'immagine o il PDF nella cartella `documenti/riconoscimenti/` (per i riconoscimenti) o `galleria/` (per le foto), mantenendo lo stesso nome indicato nel campo *File*.
 
+### Come è organizzata la galleria
+
+Le foto sono divise in **sottosezioni**, una per ogni cartella dentro `galleria/`:
+`campagna elettorale`, `eventi istituzionali`, `missioni internazionali`,
+`rassegna stampa`, `hobbies`. Sul sito ogni gruppo compare con il proprio
+titolo, nell'ordine in cui le voci sono elencate nell'editor. La sottosezione
+di una foto è decisa dal campo **Sezione** in `gestione.html`: due voci con la
+stessa sezione finiscono sotto lo stesso titolo.
+
+Gli originali (file da 3–6 MB) restano nelle rispettive cartelle, ma **il sito
+non li usa**: dentro `galleria/web/` c'è una copia alleggerita di ogni file
+(lato lungo 1600 px, circa 200 KB), con la stessa struttura di cartelle, ed è
+quella indicata nel campo *File*. Per aggiungere una foto nuova: copiala nella
+cartella tematica giusta, genera la copia web e indica il percorso
+`galleria/web/<cartella>/<nome>.jpg` nell'editor.
+
+I **video** funzionano allo stesso modo: nel campo *Tipo* va scritto `video`,
+nel campo *Copertina* il percorso di un fotogramma `.jpg` con lo stesso nome del
+filmato. Nella griglia compare la copertina con il simbolo ▶ e il filmato parte
+alla sua apertura. I video non vengono scaricati finché non si clicca, quindi
+non rallentano il caricamento della pagina.
+
+> Se lavori con Claude in questo progetto, puoi chiedere di generare le copie
+> web e le copertine dei video dopo aver aggiunto nuovi file: se ne occupa lui.
+
 ## Cosa completare prima della pubblicazione
 
 ### Informazioni di voto (sezione `id="voto"` in `index.html`)

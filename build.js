@@ -101,11 +101,27 @@ function renderRiconoscimenti(D) {
 
 function renderGalleria(D) {
   const gal = D.galleria || [];
-  return gal.length
-    ? gal.map(function (g, i) {
-        return '<button type="button" class="gallery-item" data-idx="' + i + '"><img src="' + esc(g.file) + '" alt="' + esc(g.didascalia || g.titolo || '') + '" loading="lazy"></button>';
-      }).join('')
-    : '<p class="section-lead" style="margin:0;">La galleria fotografica sarà aggiornata a breve.</p>';
+  if (!gal.length) return '<p class="section-lead" style="margin:0;">La galleria fotografica sar\u00e0 aggiornata a breve.</p>';
+  const ordine = [], gruppi = {};
+  gal.forEach(function (g, i) {
+    const s = (g.sezione || '').trim() || 'Altre immagini';
+    if (!gruppi[s]) { gruppi[s] = []; ordine.push(s); }
+    gruppi[s].push({ g: g, i: i });
+  });
+  return ordine.map(function (s) {
+    const cards = gruppi[s].map(function (o) {
+      const g = o.g;
+      const cap = g.didascalia || g.titolo || '';
+      const isVideo = g.tipo === 'video';
+      const src = isVideo ? (g.poster || g.file) : g.file;
+      return '<button type="button" class="gallery-item' + (isVideo ? ' is-video' : '') +
+             '" data-idx="' + o.i + '" title="' + esc(cap) + '">' +
+             '<img src="' + esc(encodeURI(src)) + '" alt="' + esc(cap) + '" loading="lazy">' +
+             (isVideo ? '<span class="play-badge" aria-hidden="true"></span>' : '') + '</button>';
+    }).join('');
+    return '<div class="gallery-group"><h3 class="subsection-title">' + esc(s) + '</h3>' +
+           '<div class="gallery-grid">' + cards + '</div></div>';
+  }).join('');
 }
 
 const TARGETS = [
