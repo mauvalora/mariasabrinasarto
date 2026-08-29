@@ -581,6 +581,14 @@ window.SITE_DATA = {
       "file": "galleria/web/rassegna stampa/Stampa_progetto INAIL-DPI SMART.jpg"
     },
     {
+      "titolo": "Intervista al TGR",
+      "didascalia": "Intervista al TGR",
+      "sezione": "Rassegna stampa",
+      "file": "galleria/web/rassegna stampa/Stampa_intervista_TG3.mp4",
+      "tipo": "video",
+      "poster": "galleria/web/rassegna stampa/Stampa_intervista_TG3.jpg"
+    },
+    {
       "titolo": "Sci",
       "didascalia": "Sci",
       "sezione": "Hobbies",
