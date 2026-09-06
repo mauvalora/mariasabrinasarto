@@ -432,6 +432,12 @@ window.SITE_DATA = {
       "dettagli": "Ore 14:30, via meet."
     },
     {
+      "giorno": "14",
+      "mese": "settembre",
+      "titolo": "Il futuro dell’innovazione in Sapienza: dall’innovazione didattica alla ricerca, fino al trasferimento tecnologico  Risultati ed eredità dei progetti PNRR",
+      "dettagli": "Facoltà Ingegneria Civile e Industriale, inizio ore 18:20.  Forum PNRR Sapienza. Tavola rotonda. Moderatore: Maurizio Melis — panel composto dai relatori designati dalle quattro sessioni del pomeriggio e da ulteriori personalità del mondo universitario e della ricerca, delle istituzioni e del sistema produttivo [https://www.nanoinnovation2026.eu/home/index.php/side-events/affiliated-forums/forum-pnrr-sapienza-af-iv"
+    },
+    {
       "giorno": "15",
       "mese": "Settembre",
       "titolo": "Aula Magna, 10:00. Dibattito pubblico",
@@ -472,12 +478,6 @@ window.SITE_DATA = {
       "mese": "Settembre",
       "titolo": "Aula Magna, ore 10:00. Appello agli elettori",
       "dettagli": ""
-    },
-    {
-      "giorno": "14",
-      "mese": "settembre",
-      "titolo": "Il futuro dell’innovazione in Sapienza: dall’innovazione didattica alla ricerca, fino al trasferimento tecnologico  Risultati ed eredità dei progetti PNRR",
-      "dettagli": "Facoltà Ingegneria Civile e Industriale, inizio ore 18:20.  Forum PNRR Sapienza. Tavola rotonda. Moderatore: Maurizio Melis — panel composto dai relatori designati dalle quattro sessioni del pomeriggio e da ulteriori personalità del mondo universitario e della ricerca, delle istituzioni e del sistema produttivo [https://www.nanoinnovation2026.eu/home/index.php/side-events/affiliated-forums/forum-pnrr-sapienza-af-iv"
     }
   ],
   "faq": [],
