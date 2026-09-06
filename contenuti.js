@@ -54,9 +54,21 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "26",
+      "mese": "Giugno",
+      "titolo": "Incontro con Facoltà di Economia",
+      "dettagli": ""
+    },
+    {
       "giorno": "1",
       "mese": "Luglio",
       "titolo": "Incontro con Dipartimento MeMoTEF",
+      "dettagli": ""
+    },
+    {
+      "giorno": "1",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Medicina e Odontoiatria",
       "dettagli": ""
     },
     {
@@ -78,10 +90,40 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "6",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Medicina e Farmacia",
+      "dettagli": ""
+    },
+    {
       "giorno": "7",
       "mese": "Luglio",
       "titolo": "Incontro con Dipartimento Diritto ed Economia di Impresa",
       "dettagli": ""
+    },
+    {
+      "giorno": "7",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Lettere e Culture Moderne",
+      "dettagli": "Ore 10:30, Aula IV, Facoltà di Lettere."
+    },
+    {
+      "giorno": "7",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Filosofia",
+      "dettagli": "Ore 12:30, Villa Mirafiori."
+    },
+    {
+      "giorno": "7",
+      "mese": "Luglio",
+      "titolo": "Incontro con Area Supporto strategico e offerta formativa (ASOF)",
+      "dettagli": "Ore 15:30, Aula Multimediale del Rettorato."
+    },
+    {
+      "giorno": "7",
+      "mese": "Luglio",
+      "titolo": "Incontro con Area Organizzazione e sviluppo professionale (AOSP)",
+      "dettagli": "Ore 15:30, Aula Multimediale del Rettorato."
     },
     {
       "giorno": "8",
@@ -96,9 +138,21 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "8",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Medicina e Psicologia - sede Sant'Andrea",
+      "dettagli": ""
+    },
+    {
       "giorno": "9",
       "mese": "Luglio",
       "titolo": "Incontro con Dipartimento Medicina Sperimentale",
+      "dettagli": ""
+    },
+    {
+      "giorno": "9",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà Ingegneria dell'Informazione, Informatica e Statistica",
       "dettagli": ""
     },
     {
@@ -132,6 +186,12 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "13",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Medicina e Psicologia - sede via dei Marzi",
+      "dettagli": ""
+    },
+    {
       "giorno": "14",
       "mese": "Luglio",
       "titolo": "Incontro con Dipartimento Storia, Antropologia, Religioni, Arte, Spettacolo",
@@ -147,6 +207,12 @@ window.SITE_DATA = {
       "giorno": "14",
       "mese": "Luglio",
       "titolo": "Incontro con Dipartimento Comunicazione e Ricerca Sociale",
+      "dettagli": ""
+    },
+    {
+      "giorno": "14",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Architettura",
       "dettagli": ""
     },
     {
@@ -204,16 +270,202 @@ window.SITE_DATA = {
       "dettagli": ""
     },
     {
+      "giorno": "20",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento Ingegneria Automatica e Gestionale \"Antonio Ruberti\"",
+      "dettagli": ""
+    },
+    {
+      "giorno": "20",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Scienze dell'Antichità",
+      "dettagli": ""
+    },
+    {
       "giorno": "21",
       "mese": "Luglio",
       "titolo": "CNIS incontra la Prof. ssa Maria Sabrina Sarto",
       "dettagli": "Aula Marino Zuco (CU016), ore 10_00-12:00\nSarà un'occasione preziosa di dialogo aperto sui temi che daranno forma al futuro del nostro Ateneo: la ricerca interdisciplinare, le infrastrutture di ricerca, il trasferimento tecnologico, le grandi progettualità nazionali ed europee e il ruolo dei centri interdipartimentali come il CNIS. Questi aspetti si inseriscono in un più ampio percorso di riorganizzazione dell'Ateneo, orientato a promuovere una maggiore integrazione tra competenze e strutture, superando l'attuale frammentazione organizzativa e valorizzando le sinergie tra le diverse missioni dell'Università."
     },
     {
+      "giorno": "21",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Scienze Sociali ed Economiche",
+      "dettagli": ""
+    },
+    {
+      "giorno": "21",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Biologia Ambientale",
+      "dettagli": ""
+    },
+    {
+      "giorno": "21",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Biologia e Biotecnologie \"Charles Darwin\"",
+      "dettagli": ""
+    },
+    {
+      "giorno": "22",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Scienze Matematiche, Fisiche e Naturali",
+      "dettagli": ""
+    },
+    {
+      "giorno": "23",
+      "mese": "Luglio",
+      "titolo": "Incontro con Facoltà di Giurisprudenza",
+      "dettagli": ""
+    },
+    {
+      "giorno": "23",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Scienze Politiche",
+      "dettagli": ""
+    },
+    {
+      "giorno": "23",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Chirurgia",
+      "dettagli": ""
+    },
+    {
+      "giorno": "23",
+      "mese": "Luglio",
+      "titolo": "Incontro con Dipartimento di Chirurgia generale, specialistica e anestesiologia",
+      "dettagli": ""
+    },
+    {
+      "giorno": "24",
+      "mese": "Luglio",
+      "titolo": "Incontro con Comitato Sapienza per la Palestina",
+      "dettagli": ""
+    },
+    {
+      "giorno": "27",
+      "mese": "Luglio",
+      "titolo": "Incontro con Polo Pontino",
+      "dettagli": ""
+    },
+    {
+      "giorno": "2",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento Medicina Traslazionale e di Precisione",
+      "dettagli": ""
+    },
+    {
+      "giorno": "8",
+      "mese": "Settembre",
+      "titolo": "Incontro con Area Servizi per la didattica e il diritto allo studio (ARDIS)",
+      "dettagli": "Ore 11:00, Spazio ristoro, 3° piano edificio CU016."
+    },
+    {
+      "giorno": "8",
+      "mese": "Settembre",
+      "titolo": "Incontro con Area Servizi per la ricerca (ASER)",
+      "dettagli": "Ore 11:00, Spazio ristoro, 3° piano edificio CU016."
+    },
+    {
+      "giorno": "8",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento di Neuroscienze Umane",
+      "dettagli": "Ore 13:00, Aula B, sede del Dipartimento, V.le università 30."
+    },
+    {
+      "giorno": "8",
+      "mese": "Settembre",
+      "titolo": "Incontro con Centro InfoSapienza",
+      "dettagli": "Ore 15:30, Sede Ragno Blu, via dei Piceni 37."
+    },
+    {
+      "giorno": "9",
+      "mese": "Settembre",
+      "titolo": "Incontro con Area Contabilità, Finanza e Stipendi (ARCOFIS)",
+      "dettagli": "Ore 9:30, sede del Rettorato."
+    },
+    {
+      "giorno": "9",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento di Scienze Giuridiche",
+      "dettagli": "Ore 12:00, Aula Calasso, presso Facoltà di Giurisprudenza."
+    },
+    {
+      "giorno": "9",
+      "mese": "Settembre",
+      "titolo": "Incontro con Collegio dei Direttori di Dipartimento",
+      "dettagli": "Ore 15:00, Sala Organi Collegiali, presso Rettorato."
+    },
+    {
+      "giorno": "10",
+      "mese": "Settembre",
+      "titolo": "Incontro con Facoltà di Lettere",
+      "dettagli": "Ore 14:30."
+    },
+    {
+      "giorno": "11",
+      "mese": "Settembre",
+      "titolo": "Incontro con Area Servizi alle strutture di Ateneo (ASTRA)",
+      "dettagli": "Ore 9:30, Spazio ristoro, 3° piano edificio CU016."
+    },
+    {
+      "giorno": "11",
+      "mese": "Settembre",
+      "titolo": "Incontro con Area Patrimonio e sostenibilità (ARPS)",
+      "dettagli": "Ore 11:00, Sala Organi Collegiali, presso Rettorato."
+    },
+    {
+      "giorno": "11",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento di Fisica",
+      "dettagli": ""
+    },
+    {
+      "giorno": "14",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento Management",
+      "dettagli": "Ore 11:45, Facoltà di Economia, presso Dipartimento."
+    },
+    {
+      "giorno": "14",
+      "mese": "Settembre",
+      "titolo": "Incontro con Direttori delle Biblioteche",
+      "dettagli": "Ore 14:30, via meet."
+    },
+    {
       "giorno": "15",
       "mese": "Settembre",
       "titolo": "Aula Magna, 10:00. Dibattito pubblico",
       "dettagli": ""
+    },
+    {
+      "giorno": "16",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento Ingegneria Chimica, Materiali, Ambiente",
+      "dettagli": "Ore 12:00, presso il Dipartimento."
+    },
+    {
+      "giorno": "17",
+      "mese": "Settembre",
+      "titolo": "Incontro con Centro di servizi Sistema Bibliotecario Sapienza (CBS)",
+      "dettagli": "Ore 10:00, Sala conferenze presso edificio CU017."
+    },
+    {
+      "giorno": "17",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento Materno Infantile e Scienze Urologiche",
+      "dettagli": "Ore 13:00, Aula Cassano, presso il Dipartimento."
+    },
+    {
+      "giorno": "17",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento Istituto Italiano di Studi Orientali",
+      "dettagli": "Ore 15:30, Edificio Marco Polo."
+    },
+    {
+      "giorno": "18",
+      "mese": "Settembre",
+      "titolo": "Incontro con Dipartimento di Scienze della Terra",
+      "dettagli": "Ore 11:00, presso il Dipartimento."
     },
     {
       "giorno": "25",
