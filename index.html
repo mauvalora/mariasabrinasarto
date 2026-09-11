@@ -25,6 +25,11 @@
 <meta name="twitter:title" content="Maria Sabrina Sarto · Candidata Rettrice Sapienza 2026–2032">
 <meta name="twitter:description" content="La Sapienza del Terzo Millennio. Scopri il programma, il CV e la mappa contestuale.">
 <meta name="twitter:image" content="https://mariasabrinasarto.it/anteprima-social.png">
+
+<!-- Tipografia: Space Grotesk (titoli) + Inter (testo), auto-ospitati in font/
+     I file si rigenerano con lo script scarica-font.sh nella cartella del progetto. -->
+<link rel="stylesheet" href="font/fonts.css">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -35,10 +40,12 @@
   --bg: #f5f6fa;
   --card: #ffffff;
   --line: #e6e8ef;
+  --font-testo: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-titoli: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 html { scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-testo);
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
@@ -57,7 +64,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 1000px; margin: 0 auto; padding: 12px 20px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.nav-brand { font-size: 14px; font-weight: 700; color: var(--burgundy-1); letter-spacing: .2px; }
+.nav-brand { font-family: var(--font-titoli); font-size: 14px; font-weight: 700; color: var(--burgundy-1); letter-spacing: -.2px; }
 .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
 .nav-links a { font-size: 13px; color: var(--muted); font-weight: 500; transition: color .15s; }
 .nav-links a:hover { color: var(--burgundy-2); }
@@ -83,11 +90,12 @@ a { color: inherit; text-decoration: none; }
 .nav-brand { display: flex; align-items: center; gap: 9px; }
 .nav-brand img { width: 26px; height: 26px; border-radius: 5px; }
 .hero .eyebrow {
-  font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(255,255,255,.62); margin-bottom: 16px;
 }
-.hero h1 { font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -.5px; }
-.hero .role { font-size: 15px; color: rgba(255,255,255,.82); margin-top: 14px; font-weight: 500; }
+.hero h1 { font-family: var(--font-titoli); font-size: 40px; font-weight: 700; line-height: 1.14; letter-spacing: -1.2px; }
+.hero .role { font-family: var(--font-titoli); font-size: 26px; color: rgba(255,255,255,.96);
+              margin-top: 16px; font-weight: 600; letter-spacing: -.6px; line-height: 1.2; }
 .hero .values {
   font-size: 13px; color: rgba(255,255,255,.72); margin-top: 20px;
   letter-spacing: .3px;
@@ -105,7 +113,7 @@ section { padding: 56px 0; }
   font-size: 11px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 1.4px; color: var(--burgundy-2); margin-bottom: 8px;
 }
-.section-title { font-size: 26px; font-weight: 700; letter-spacing: -.3px; margin-bottom: 10px; }
+.section-title { font-family: var(--font-titoli); font-size: 26px; font-weight: 700; letter-spacing: -.9px; margin-bottom: 10px; }
 .section-lead { font-size: 15px; color: var(--muted); max-width: 640px; margin-bottom: 30px; }
 
 /* ── CARDS ── */
@@ -117,7 +125,7 @@ section { padding: 56px 0; }
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(107,26,42,.12); border-color: #d9b3ba; }
 .card .ic { font-size: 30px; margin-bottom: 14px; }
-.card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.card h3 { font-family: var(--font-titoli); font-size: 17px; font-weight: 600; letter-spacing: -.4px; margin-bottom: 8px; }
 .card p { font-size: 13.5px; color: var(--muted); flex: 1; margin-bottom: 18px; }
 .btn {
   display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
@@ -149,7 +157,7 @@ section { padding: 56px 0; }
   background: linear-gradient(135deg, #6b1a2a 0%, #9b2335 100%);
   color: #fff; border-radius: 20px; padding: 48px 40px; text-align: center;
 }
-.contact h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.contact h2 { font-family: var(--font-titoli); font-size: 24px; font-weight: 700; letter-spacing: -.8px; margin-bottom: 10px; }
 .contact p { font-size: 14px; color: rgba(255,255,255,.82); max-width: 520px; margin: 0 auto 26px; }
 .contact .mail-btn {
   display: inline-flex; align-items: center; gap: 9px;
@@ -177,7 +185,8 @@ section { padding: 56px 0; }
 .subsection { margin-top: 34px; }
 .subsection:first-of-type { margin-top: 4px; }
 .subsection-title {
-  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  font-family: var(--font-titoli);
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 1.2px; color: var(--burgundy-1);
   padding-bottom: 10px; margin-bottom: 18px;
   border-bottom: 1px solid var(--line);
@@ -296,6 +305,7 @@ section { padding: 56px 0; }
 /* ── RESPONSIVE ── */
 @media (max-width: 720px) {
   .hero h1 { font-size: 30px; }
+  .hero .role { font-size: 21px; }
   .hero .container { flex-direction: column; text-align: center; gap: 24px; }
   .hero-logo img { width: 130px; }
   .feature { grid-template-columns: 1fr; padding: 28px; }
@@ -345,8 +355,7 @@ section { padding: 56px 0; }
       <div class="eyebrow">Candidata Rettrice di Sapienza · Sessennio 2026–2032</div>
       <h1>La Sapienza del Terzo Millennio</h1>
       <div class="role">Maria Sabrina Sarto</div>
-      <div class="values">Autorevolezza · Partecipazione · Inclusione · Internazionalizzazione</div>
-      <div class="slogan">La pluralità che costruisce il futuro</div>
+      <div class="slogan">Autorevolezza · Partecipazione · Inclusione · Internazionalizzazione</div>
     </div>
   </div>
 </header>
