@@ -483,6 +483,13 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
+      "testata": "la Repubblica Roma",
+      "titolo": "I candidati a rettore, Maria Sabrina Sarto: \u201cAlla Sapienza meno burocrazia e pi\u00f9 risorse per ricerca\u201d",
+      "data": "13 settembre 2026",
+      "url": "https://roma.repubblica.it/cronaca/2026/09/13/news/maria_sabrina_sarto_intervista_rettore_sapienza_elezioni-425582262/",
+      "pdf": "documenti/repubblica-roma-13-settembre-2026.pdf"
+    },
+    {
       "testata": "Il Messaggero",
       "titolo": "Roma, Sapienza: candidati rettore e programmi",
       "data": "14 luglio 2026",

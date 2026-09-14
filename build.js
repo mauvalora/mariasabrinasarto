@@ -75,11 +75,15 @@ function renderStampa(D) {
   const st = D.stampa || [];
   return st.length
     ? st.map(function (p) {
-        const inner = '<div class="press-item"><div class="src">' + esc(p.testata) +
-                    '</div><h4>' + esc(p.titolo) + '</h4><div class="date">' + esc(p.data) + '</div></div>';
-        return (p.url && p.url.trim())
-          ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + inner + '</a>'
-          : inner;
+        const extra = (p.pdf && p.pdf.trim())
+          ? '<a class="press-pdf" href="' + esc(p.pdf) + '" target="_blank" rel="noopener">Leggi l\u2019articolo in PDF \u2192</a>'
+          : '';
+        const steso = (p.url && p.url.trim())
+          ? '<a class="press-link" href="' + esc(p.url) + '" target="_blank" rel="noopener" aria-label="' + esc(p.titolo) + '"></a>'
+          : '';
+        return '<div class="press-item">' + steso + '<div class="src">' + esc(p.testata) +
+               '</div><h4>' + esc(p.titolo) + '</h4><div class="date">' + esc(p.data) + '</div>' +
+               extra + '</div>';
       }).join('')
     : '<p class="section-lead" style="margin:0;">Nessun articolo disponibile al momento.</p>';
 }
