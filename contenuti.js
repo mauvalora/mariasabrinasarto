@@ -483,6 +483,13 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
+      "testata": "NanoInnovation 2026",
+      "titolo": "Forum PNRR Sapienza \u2013 Tavola rotonda \u201cIl futuro dell\u2019innovazione in Sapienza: dall\u2019innovazione didattica alla ricerca, fino al trasferimento tecnologico\u201d, moderata da Maurizio Melis",
+      "data": "14 settembre 2026, ore 18:00",
+      "url": "https://www.nanoinnovation2026.eu/home/index.php/side-events/affiliated-forums/forum-pnrr-sapienza-af-iv",
+      "pdf": "documenti/forum-pnrr-sapienza-nanoinnovation-14-settembre-2026.pdf"
+    },
+    {
       "testata": "RomaToday",
       "titolo": "La Sapienza, sfida a 5 per la poltrona di rettore. Dal nuovo Umberto I al caroaffitti: i dossier al centro",
       "data": "16 settembre 2026",
@@ -747,6 +754,18 @@ window.SITE_DATA = {
       "didascalia": "Chiusura dei lavori della Commissione Ricerca – bando 2025",
       "sezione": "Eventi istituzionali",
       "file": "galleria/web/eventi istituzionali/chiusura lavori_commissione ricerca-bando 2025.jpg"
+    },
+    {
+      "titolo": "Forum PNRR Sapienza a NanoInnovation 2026",
+      "didascalia": "Forum PNRR Sapienza a NanoInnovation 2026 – la tavola rotonda delle 18:00 nel Chiostro",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/forum a nanoInnovation/forum-pnrr-sapienza_1.jpg"
+    },
+    {
+      "titolo": "Forum PNRR Sapienza a NanoInnovation 2026",
+      "didascalia": "Forum PNRR Sapienza a NanoInnovation 2026 – il panel della tavola rotonda delle 18:00, moderata da Maurizio Melis",
+      "sezione": "Eventi istituzionali",
+      "file": "galleria/web/forum a nanoInnovation/forum-pnrr-sapienza_2.jpg"
     },
     {
       "titolo": "Expo 2020 Dubai – Dubai Marina",
