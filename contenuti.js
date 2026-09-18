@@ -483,6 +483,13 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
+      "testata": "RomaToday",
+      "titolo": "La Sapienza, sfida a 5 per la poltrona di rettore. Dal nuovo Umberto I al caroaffitti: i dossier al centro",
+      "data": "16 settembre 2026",
+      "url": "https://www.romatoday.it/politica/sapienza-elezioni-rettore-candidati.html",
+      "pdf": "documenti/romatoday-16-settembre-2026.pdf"
+    },
+    {
       "testata": "la Repubblica Roma",
       "titolo": "I candidati a rettore, Maria Sabrina Sarto: \u201cAlla Sapienza meno burocrazia e pi\u00f9 risorse per ricerca\u201d",
       "data": "13 settembre 2026",
