@@ -483,18 +483,18 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
-      "testata": "NanoInnovation 2026",
-      "titolo": "Forum PNRR Sapienza \u2013 Tavola rotonda \u201cIl futuro dell\u2019innovazione in Sapienza: dall\u2019innovazione didattica alla ricerca, fino al trasferimento tecnologico\u201d, moderata da Maurizio Melis",
-      "data": "14 settembre 2026, ore 18:00",
-      "url": "https://www.nanoinnovation2026.eu/home/index.php/side-events/affiliated-forums/forum-pnrr-sapienza-af-iv",
-      "pdf": "documenti/forum-pnrr-sapienza-nanoinnovation-14-settembre-2026.pdf"
-    },
-    {
       "testata": "RomaToday",
       "titolo": "La Sapienza, sfida a 5 per la poltrona di rettore. Dal nuovo Umberto I al caroaffitti: i dossier al centro",
       "data": "16 settembre 2026",
       "url": "https://www.romatoday.it/politica/sapienza-elezioni-rettore-candidati.html",
       "pdf": "documenti/romatoday-16-settembre-2026.pdf"
+    },
+    {
+      "testata": "NanoInnovation 2026",
+      "titolo": "Forum PNRR Sapienza \u2013 Tavola rotonda \u201cIl futuro dell\u2019innovazione in Sapienza: dall\u2019innovazione didattica alla ricerca, fino al trasferimento tecnologico\u201d, moderata da Maurizio Melis",
+      "data": "14 settembre 2026, ore 18:00",
+      "url": "https://www.nanoinnovation2026.eu/home/index.php/side-events/affiliated-forums/forum-pnrr-sapienza-af-iv",
+      "pdf": "documenti/forum-pnrr-sapienza-nanoinnovation-14-settembre-2026.pdf"
     },
     {
       "testata": "la Repubblica Roma",
@@ -540,16 +540,16 @@ window.SITE_DATA = {
       "url": "https://www.radiosapienza.net/rettorato-sapienza-2026-ufficializzate-date-e-modalita-delle-elezioni/"
     },
     {
-      "testata": "Roma Tre Radio (YouTube)",
-      "titolo": "Intervista a MARIA SABRINA SARTO, Coordinatrice del Centro di Eccellenza DTC Lazio",
-      "data": "11 febbraio 2020",
-      "url": "https://share.google/o3ylKeT69mNgRcDDc"
-    },
-    {
       "testata": "YouTube",
       "titolo": "Cosa sono i Flagship Projects? ",
       "data": "16 gennaio 2024",
       "url": "https://share.google/yuZtqlF5ZgIhaA9YV"
+    },
+    {
+      "testata": "Roma Tre Radio (YouTube)",
+      "titolo": "Intervista a MARIA SABRINA SARTO, Coordinatrice del Centro di Eccellenza DTC Lazio",
+      "data": "11 febbraio 2020",
+      "url": "https://share.google/o3ylKeT69mNgRcDDc"
     },
     {
       "testata": "WikiPedia IT",
