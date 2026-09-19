@@ -628,6 +628,30 @@ window.SITE_DATA = {
       "file": "galleria/web/campagna elettorale/IMG_0979.jpg"
     },
     {
+      "titolo": "Aula Magna – Dibattito pubblico tra i candidati",
+      "didascalia": "Aula Magna – L’intervento di Maria Sabrina Sarto al dibattito pubblico del 15 settembre 2026",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/aula magna 15 settembre/dibattito-15-settembre_1.jpg"
+    },
+    {
+      "titolo": "Aula Magna – Dibattito pubblico tra i candidati",
+      "didascalia": "Aula Magna – I candidati durante il dibattito pubblico del 15 settembre 2026",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/aula magna 15 settembre/dibattito-15-settembre_2.jpg"
+    },
+    {
+      "titolo": "Aula Magna – Dibattito pubblico tra i candidati",
+      "didascalia": "Aula Magna – Il dibattito pubblico tra i candidati alla carica di Rettrice e Rettore, 15 settembre 2026",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/aula magna 15 settembre/dibattito-15-settembre_3.jpg"
+    },
+    {
+      "titolo": "Aula Magna – Dibattito pubblico tra i candidati",
+      "didascalia": "Aula Magna – I candidati sul palco al termine del dibattito pubblico del 15 settembre 2026",
+      "sezione": "Campagna elettorale",
+      "file": "galleria/web/aula magna 15 settembre/dibattito-15-settembre_4.jpg"
+    },
+    {
       "titolo": "Roma Smart City Awards 2026",
       "didascalia": "Roma Smart City Awards 2026",
       "sezione": "Eventi istituzionali",
