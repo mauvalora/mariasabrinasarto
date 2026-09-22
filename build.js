@@ -61,7 +61,9 @@ function esc(s) {
 // ── stessi render della sezione <script> in index.html ──
 
 function renderAgenda(D) {
-  const ev = D.agenda || [];
+  // Dal più recente al più vecchio: gli appuntamenti imminenti contano più
+  // dell'archivio storico, soprattutto man mano che la campagna avanza.
+  const ev = (D.agenda || []).slice().reverse();
   return ev.length
     ? ev.map(function (e) {
         return '<div class="event"><div class="date"><div class="d">' + esc(e.giorno) +
