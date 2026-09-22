@@ -474,6 +474,12 @@ window.SITE_DATA = {
       "dettagli": "Ore 11:00, presso il Dipartimento."
     },
     {
+      "giorno": "23",
+      "mese": "Settembre",
+      "titolo": "Facolt\u00e0 ICI \u2013 SPV, aula 20, ore 16:00. Incontro con il DIMA",
+      "dettagli": ""
+    },
+    {
       "giorno": "25",
       "mese": "Settembre",
       "titolo": "Aula Magna, ore 10:00. Appello agli elettori",
