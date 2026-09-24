@@ -34,14 +34,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- la Repubblica, 24 settembre 2026 — copia dell’articolo (PDF) -->
-  <url>
-    <loc>https://mariasabrinasarto.it/documenti/repubblica-24-settembre-2026.pdf</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
   <!-- RomaToday, 16 settembre 2026 — copia dell’articolo (PDF) -->
   <url>
     <loc>https://mariasabrinasarto.it/documenti/romatoday-16-settembre-2026.pdf</loc>
@@ -54,14 +46,6 @@
   <url>
     <loc>https://mariasabrinasarto.it/documenti/forum-pnrr-sapienza-nanoinnovation-14-settembre-2026.pdf</loc>
     <lastmod>2026-09-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- la Repubblica Roma, 13 settembre 2026 — copia dell’articolo (PDF) -->
-  <url>
-    <loc>https://mariasabrinasarto.it/documenti/repubblica-roma-13-settembre-2026.pdf</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

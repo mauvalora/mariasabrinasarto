@@ -492,8 +492,7 @@ window.SITE_DATA = {
       "testata": "la Repubblica",
       "titolo": "Chi guider\u00e0 la Sapienza? Cinque candidati e la sfida per l\u2019autonomia",
       "data": "24 settembre 2026",
-      "url": "https://www.repubblica.it/venerdi/2026/09/24/news/sapienza_elezione_nuovo_rettore_candidati-425602777/",
-      "pdf": "documenti/repubblica-24-settembre-2026.pdf"
+      "url": "https://www.repubblica.it/venerdi/2026/09/24/news/sapienza_elezione_nuovo_rettore_candidati-425602777/"
     },
     {
       "testata": "RomaToday",
@@ -513,8 +512,7 @@ window.SITE_DATA = {
       "testata": "la Repubblica Roma",
       "titolo": "I candidati a rettore, Maria Sabrina Sarto: \u201cAlla Sapienza meno burocrazia e pi\u00f9 risorse per ricerca\u201d",
       "data": "13 settembre 2026",
-      "url": "https://roma.repubblica.it/cronaca/2026/09/13/news/maria_sabrina_sarto_intervista_rettore_sapienza_elezioni-425582262/",
-      "pdf": "documenti/repubblica-roma-13-settembre-2026.pdf"
+      "url": "https://roma.repubblica.it/cronaca/2026/09/13/news/maria_sabrina_sarto_intervista_rettore_sapienza_elezioni-425582262/"
     },
     {
       "testata": "Il Messaggero",
