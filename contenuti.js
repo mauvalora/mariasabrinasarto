@@ -489,6 +489,13 @@ window.SITE_DATA = {
   "faq": [],
   "stampa": [
     {
+      "testata": "la Repubblica",
+      "titolo": "Chi guider\u00e0 la Sapienza? Cinque candidati e la sfida per l\u2019autonomia",
+      "data": "24 settembre 2026",
+      "url": "https://www.repubblica.it/venerdi/2026/09/24/news/sapienza_elezione_nuovo_rettore_candidati-425602777/",
+      "pdf": "documenti/repubblica-24-settembre-2026.pdf"
+    },
+    {
       "testata": "RomaToday",
       "titolo": "La Sapienza, sfida a 5 per la poltrona di rettore. Dal nuovo Umberto I al caroaffitti: i dossier al centro",
       "data": "16 settembre 2026",

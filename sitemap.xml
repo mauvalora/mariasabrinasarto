@@ -5,7 +5,7 @@
        galleria, FAQ, agenda, rassegna stampa, informazioni di voto, contatti -->
   <url>
     <loc>https://mariasabrinasarto.it/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -32,6 +32,14 @@
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- la Repubblica, 24 settembre 2026 — copia dell’articolo (PDF) -->
+  <url>
+    <loc>https://mariasabrinasarto.it/documenti/repubblica-24-settembre-2026.pdf</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- RomaToday, 16 settembre 2026 — copia dell’articolo (PDF) -->
